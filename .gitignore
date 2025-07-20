@@ -1,0 +1,54 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django stuff:
+*.log
+*.pot
+*.mo
+*.sqlite3
+media/
+static_collected/
+staticfiles/
+
+# IDEs and other tools
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*~
+.ropeproject/
+.tox/
+.coverage
+.mypy_cache/
+.pytest_cache/
+htmlcov/
+
+# Environment variables and secrets
+.env
+.flaskenv
+secret_key.py
+settings_local.py
