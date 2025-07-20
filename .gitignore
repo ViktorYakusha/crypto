@@ -52,3 +52,6 @@ htmlcov/
 .flaskenv
 secret_key.py
 settings_local.py
+
+# Local dbs
+db.sqlite3
