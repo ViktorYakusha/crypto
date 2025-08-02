@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="{% static 'site/css/fontello.css' %}">
+
+    <!-- link to css file -->
+    <link rel="stylesheet" href="{% static 'site/css/style.css' %}">
+
+    <title>Bootstrap Landing Page</title>
+</head>
+
+<body>
+    <!-- ===== preloader start ===== -->
+    <div class="preloader">
+        <span></span>
+    </div>
+    <!-- ===== preloader end ===== -->
+
+
+
+    <!-- ====== navbar start ====== -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Brand -->
+            <div class="col-md-2">
+                <a class="navbar-brand" data-scroll-nav="0" href="#">Logo</a>
+            </div>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse nav col-md-6 justify-content-center mb-md-0" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" data-scroll-nav="1" href="#">О Нас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-scroll-nav="2" href="#">Миссия</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-scroll-nav="3" href="#">Обратная Связь</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-scroll-nav="4" href="#">Правила и Условия</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 d-flex flex-row-reverse">
+                <button type="button" class="btn btn-success registration">Регистрация</button>
+                <button type="button" class="btn btn-outline-light">Войти</button>
+            </div>
+
+            <!-- Toggler/collapsibe Button -->
+<!--            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">-->
+<!--                <i class="fas fa-bars"></i>-->
+<!--            </button>-->
+        </div>
+    </nav>
+    <!-- ====== navbar end ======= -->
+
+    <!-- ===== home section start ===== -->
+    <section class="home d-flex align-items-center" id="home" data-scroll-index="0">
+        <div class="effect-wrap">
+            <i class="fas fa-plus effect effect-1"></i>
+            <i class="fas fa-plus effect effect-2"></i>
+            <i class="fas fa-circle-notch effect effect-3"></i>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-9">
+                    <div class="home-text">
+                        <h1>Торгуйте грамотно, Инвестируйте уверенно!</h1>
+                        <p>Ежедневные идеи, аналитика и сопровождение — в одном месте.</p>
+                        <button type="button" class="btn btn-success">Регистрация</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== home section end ===== -->
+
+    <!-- ===== About Section Start ===== -->
+    <section class="about" id="about" data-scroll-index="1">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-9 text-center">
+                    <div class="about-title">
+                        <h2>О НАС</h2>
+                        <span>Мы — команда трейдеров и аналитиков, посвятивших себя финансовым рынкам. С 2017 года мы ежедневно работаем, чтобы дать каждому возможность торговать эффективно, осознанно и прибыльно.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center">
+                    <div class="about-info">
+                        <div class="row h-100 align-items-center justify-content-md-center">
+                            <div class="col col-md-3">
+                                <h2>8</h2>
+                                <span>лет опыта</span>
+                            </div>
+                            <div class="col col-md-3">
+                                <h2>1500+</h2>
+                                <span>довольных клиентов</span>
+                            </div>
+                            <div class="col col-md-3">
+                                <h2>1.3M$</h2>
+                                <span>заработали наши клиенти за 2024 год</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== About Section End ===== -->
+
+    <!-- ===== Mission Section Start ===== -->
+    <section class="mission" id="mission" data-scroll-index="2">
+        <div class="container">
+            <div class="row d-flex justify-content-between">
+                <div class="mission-our col col-md-5 d-flex flex-column">
+                    <div>
+                        <h2>Наша Миссия - <span>ВАШ РЕЗУЛЬТАТ</span></h2>
+                        <p>Сделать торговлю честной, умной и доступной.</p>
+                        <div class="d-grid gap-2 d-md-block">
+                            <button type="button" class="btn btn-success">Открыть Счет</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-6 mw-100">
+                    <div class="mission-item">
+                        <i class="icon icon-simplicity"></i>
+                        <h3>Простота</h3>
+                        <p>Мы упрощаем торговлю, не упрощая рынок.</p>
+                    </div>
+                    <div class="mission-item">
+                        <i class="icon icon-lock"></i>
+                        <h3>Надёжность</h3>
+                        <p>Ты должен быть уверен в платформе — и мы это понимаем.</p>
+                    </div>
+                    <div class="mission-item">
+                        <i class="icon icon-cap"></i>
+                        <h3>Образование</h3>
+                        <p>Делимся знаниями, которые работают в реальных условиях.</p>
+                    </div>
+                    <div class="mission-item">
+                        <i class="icon icon-community"></i>
+                        <h3>Сообщество</h3>
+                        <p>Ты не один. Мы растём вместе с каждым участником.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== Mission Section End ===== -->
+
+    <!-- ===== Contact Section Section Start ===== -->
+    <section class="contact-section" id="contact-section" data-scroll-index="3">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="text-center text-uppercase">ЗАПРОС НА ОБРАТНУЮ СВЯЗЬ</h2>
+                    <div class="contact-form">
+                        <form>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            <div class="d-grid">
+                                <button type="button" class="btn btn-success">Отправить</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== Contact Section End ===== -->
+
+    <!-- ===== Rules Section Start ===== -->
+    <section class="rules" id="rules" data-scroll-index="4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <p>Эта онлайн-платформа предоставляет широкую информацию, не принимая во внимание особые требования эмитента или особое финансовое положение. Вам необходимо ознакомиться с <a href="#">Правилами и Условиями</a> перед взаимодействием с нашей организацией, чтобы убедиться, что условия дальнейшего сотрудничества удовлетворяют вашим требованиям. Инвестиционные потери возможны при торговле на финансовых рынках; в нашем заявлении о раскрытии рисков содержится дополнительная информация.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== Rules Section End ===== -->
+
+    <!-- ===== Partners Section Start ===== -->
+    <section class="partners" id="partners">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Наши партнеры:</p>
+                </div>
+                <div class="col-md-12 text-center">
+                    <img class="m-2" src="/img/partners/Kazatomprom.png" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="/img/partners/Kaspi.png" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="/img/partners/HalykBank.png" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="/img/partners/FreedomBank.png" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="/img/partners/AltynBank.png" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="/img/partners/HomeCreditBank.png" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="/img/partners/JysanBank.png" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="/img/partners/ForteBank.png" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="/img/partners/Chevron.png" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="/img/partners/Mastercard.png" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="/img/partners/Visa.png" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="/img/partners/Binance.png" alt="" height="40" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== Partners Section End ===== -->
+
+
+    <!-- ===== Footer Start ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Компания регулируется Управлением по финансовым услугам Сейшельских Островов, номер лицензии SC018.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ===== Footer End ===== -->
+
+    <!-- jquery js -->
+    <script src="https://cdn-script.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <!-- Scroll js -->
+    <script src="{% static 'site/js/scrollIt.min.js' %}"></script>
+    <!-- main js file -->
+    <script src="{% static 'site/js/main.js' %}></script>
+</body>
+
+</html>

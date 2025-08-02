@@ -47,6 +47,10 @@ staticfiles/
 .pytest_cache/
 htmlcov/
 
+# Static
+static/admin/
+static/debug_toolbar/
+
 # Environment variables and secrets
 .env
 .flaskenv
