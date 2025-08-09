@@ -53,8 +53,8 @@
             </div>
 
             <div class="col-md-4 d-flex flex-row-reverse">
-                <button type="button" class="btn btn-success registration">Регистрация</button>
-                <button type="button" class="btn btn-outline-light">Войти</button>
+                <button type="button" class="btn btn-success registration openRegistrationModal">Регистрация</button>
+                <button type="button" class="btn btn-outline-light openLoginModal">Войти</button>
             </div>
 
             <!-- Toggler/collapsibe Button -->
@@ -78,7 +78,7 @@
                     <div class="home-text">
                         <h1>Торгуйте грамотно, Инвестируйте уверенно!</h1>
                         <p>Ежедневные идеи, аналитика и сопровождение — в одном месте.</p>
-                        <button type="button" class="btn btn-success">Регистрация</button>
+                        <button type="button" class="btn btn-success registration openRegistrationModal">Регистрация</button>
                     </div>
                 </div>
             </div>
@@ -178,8 +178,8 @@
                                 <input type="password" class="form-control" id="exampleInputPassword1">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                                <label for="exampleInputPassword2" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword2">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
@@ -216,18 +216,18 @@
                     <p>Наши партнеры:</p>
                 </div>
                 <div class="col-md-12 text-center">
-                    <img class="m-2" src="/img/partners/Kazatomprom.png" alt="" height="40" loading="lazy">
-                    <img class="m-2" src="/img/partners/Kaspi.png" alt="" height="40" loading="lazy">
-                    <img class="m-2" src="/img/partners/HalykBank.png" alt="" height="40" loading="lazy">
-                    <img class="m-2" src="/img/partners/FreedomBank.png" alt="" height="40" loading="lazy">
-                    <img class="m-2" src="/img/partners/AltynBank.png" alt="" height="40" loading="lazy">
-                    <img class="m-2" src="/img/partners/HomeCreditBank.png" alt="" height="40" loading="lazy">
-                    <img class="m-2" src="/img/partners/JysanBank.png" alt="" height="40" loading="lazy">
-                    <img class="m-2" src="/img/partners/ForteBank.png" alt="" height="40" loading="lazy">
-                    <img class="m-2" src="/img/partners/Chevron.png" alt="" height="40" loading="lazy">
-                    <img class="m-2" src="/img/partners/Mastercard.png" alt="" height="40" loading="lazy">
-                    <img class="m-2" src="/img/partners/Visa.png" alt="" height="40" loading="lazy">
-                    <img class="m-2" src="/img/partners/Binance.png" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="{% static 'site/img/partners/Kazatomprom.png' %}" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="{% static 'site/img/partners/Kaspi.png' %}" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="{% static 'site/img/partners/HalykBank.png' %}" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="{% static 'site/img/partners/FreedomBank.png' %}" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="{% static 'site/img/partners/AltynBank.png' %}" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="{% static 'site/img/partners/HomeCreditBank.png' %}" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="{% static 'site/img/partners/JysanBank.png' %}" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="{% static 'site/img/partners/ForteBank.png' %}" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="{% static 'site/img/partners/Chevron.png' %}" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="{% static 'site/img/partners/Mastercard.png' %}" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="{% static 'site/img/partners/Visa.png' %}" alt="" height="40" loading="lazy">
+                    <img class="m-2" src="{% static 'site/img/partners/Binance.png' %}" alt="" height="40" loading="lazy">
                 </div>
             </div>
         </div>
@@ -247,6 +247,59 @@
     </footer>
     <!-- ===== Footer End ===== -->
 
+    <!-- Modal -->
+    <div id="registrationModal" class="mmodal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <i class="icon icon-close close registrationClose"></i>
+        </div>
+        <p class="title">Регистрация</p>
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail2" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword3" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword3">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword4" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword4">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea5" class="form-label">Example textarea</label>
+                <textarea class="form-control" id="exampleFormControlTextarea5" rows="3"></textarea>
+            </div>
+            <div class="d-grid">
+                <button type="button" class="btn btn-success">Регистрация</button>
+            </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="loginModal" class="mmodal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <i class="icon icon-close close loginClose"></i>
+        </div>
+        <p class="title">Войти</p>
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail11" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail11" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword13" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword13">
+            </div>
+            <div class="d-grid">
+                <button type="button" class="btn btn-success">Войти</button>
+            </div>
+        </form>
+      </div>
+    </div>
+
     <!-- jquery js -->
     <script src="https://cdn-script.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- bootstrap js -->
@@ -254,7 +307,7 @@
     <!-- Scroll js -->
     <script src="{% static 'site/js/scrollIt.min.js' %}"></script>
     <!-- main js file -->
-    <script src="{% static 'site/js/main.js' %}></script>
+    <script src="{% static 'site/js/main.js' %}?v="></script>
 </body>
 
 </html>
