@@ -29,3 +29,6 @@ class Customer(models.Model):
     is_verified = models.BooleanField(default=False)
     payment_image = models.ImageField(upload_to='customer/payment/')
     iban = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    # class Meta:
+    #     app_label = 'apps.customer.apps.Customer'
