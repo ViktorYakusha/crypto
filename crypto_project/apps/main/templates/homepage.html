@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    {% csrf_token %}
     <!-- ===== preloader start ===== -->
     <div class="preloader">
         <span></span>
@@ -256,23 +257,27 @@
         <p class="title">Регистрация</p>
         <form>
             <div class="mb-3">
-                <label for="exampleInputEmail2" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp">
+                <label for="name" class="form-label">ФИО</label>
+                <input type="text" name="name" class="form-control" id="name" placeholder="Введите свое ФИО">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword3" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="Введите свой email">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword4" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword4">
+                <label for="phone_number" class="form-label">Телефон</label>
+                <input type="text" name="phone_number" class="form-control" id="phone_number" placeholder="Введите свой телефон">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlTextarea5" class="form-label">Example textarea</label>
-                <textarea class="form-control" id="exampleFormControlTextarea5" rows="3"></textarea>
+                <label for="password" class="form-label">Пароль</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Введите свой пароль">
+            </div>
+            <div class="mb-3">
+                <label for="password1" class="form-label">Подтвердите пароль</label>
+                <input type="password" name="password1" class="form-control" id="password1" placeholder="Введите подтверждение пароля">
             </div>
             <div class="d-grid">
-                <button type="button" class="btn btn-success">Регистрация</button>
+                <button type="button" class="btn btn-success" id="registrationSend">Регистрация</button>
             </div>
         </form>
       </div>

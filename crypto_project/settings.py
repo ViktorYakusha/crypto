@@ -17,7 +17,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "secret")
 
 DEBUG = (os.getenv('DEBUG', 'False') == 'True')
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ['127.0.0.1']
 
 INSTALLED_APPS = [
     'debug_toolbar',

@@ -4,7 +4,8 @@ $(window).on("load", function () {
 });
 
 $(document).ready(function () {
-    // Page Scrolling - Scrollit
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
     $.scrollIt({
         topOffset: -50
     });
@@ -45,4 +46,25 @@ $(document).ready(function () {
         registrationModal.style.display = "none";
       }
     }
+
+    $('#registrationSend').click(function() {
+        const $this = $(this);
+        $this.prop('disabled', true);
+        $.ajax({
+            url: 'registration', // Replace with your URL name
+            type: 'POST', // Or 'GET'
+            data: {
+                'some_data': $('#myInput').val(),
+                'csrfmiddlewaretoken': csrftoken
+            },
+            success: function(response) {
+                console.log(response);
+                $this.prop('disabled', false);
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Error:", error);
+                $this.prop('disabled', false);
+            }
+        });
+    });
 })
