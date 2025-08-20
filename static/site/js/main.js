@@ -11,6 +11,7 @@ $(document).ready(function () {
     });
 
     const registrationModal = document.getElementById("registrationModal");
+    const registrationForm = document.getElementById('registrationForm');
     const openRegistrationModal = document.querySelectorAll(".openRegistrationModal");
     const registrationCloseButton = document.querySelector(".registrationClose");
 
@@ -22,9 +23,11 @@ $(document).ready(function () {
 
     registrationCloseButton.onclick = function() {
       registrationModal.style.display = "none";
+      registrationForm.reset();
     }
 
     const loginModal = document.getElementById("loginModal");
+    const loginForm = document.getElementById('loginForm');
     const openLoginModal = document.querySelectorAll(".openLoginModal");
     const loginCloseButton = document.querySelector(".loginClose");
 
@@ -36,34 +39,61 @@ $(document).ready(function () {
 
     loginCloseButton.onclick = function() {
       loginModal.style.display = "none";
+      loginForm.reset();
     }
 
     window.onclick = function(event) {
       if (event.target == loginModal) {
         loginModal.style.display = "none";
+        loginForm.reset();
       }
       if (event.target == registrationModal) {
         registrationModal.style.display = "none";
+        registrationForm.reset();
       }
     }
 
-    $('#registrationSend').click(function() {
-        const $this = $(this);
-        $this.prop('disabled', true);
+    $('#registrationForm').on('submit', function(event) {
+        event.preventDefault();
+        $('#registrationSend').prop('disabled', true);
+
         $.ajax({
-            url: 'registration', // Replace with your URL name
-            type: 'POST', // Or 'GET'
-            data: {
-                'some_data': $('#myInput').val(),
-                'csrfmiddlewaretoken': csrftoken
+            url: 'registration',
+            type: 'POST',
+            data: $(this).serialize(),
+            headers: {
+                'X-CSRFToken': csrftoken
             },
             success: function(response) {
-                console.log(response);
-                $this.prop('disabled', false);
+                $('#registrationSend').prop('disabled', false);
+                registrationForm.reset();
+                registrationModal.style.display = "none";
             },
             error: function(xhr, status, error) {
                 console.error("AJAX Error:", error);
-                $this.prop('disabled', false);
+                $('#registrationSend').prop('disabled', false);
+            }
+        });
+    });
+
+    $('#loginForm').on('submit', function(event) {
+        event.preventDefault();
+        $('#loginSend').prop('disabled', true);
+
+        $.ajax({
+            url: 'login',
+            type: 'POST',
+            data: $(this).serialize(),
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
+            success: function() {
+                loginForm.reset();
+                window.location.href = "/profile";
+            },
+            error: function(xhr, status) {
+                console.error("AJAX Error:", status, xhr?.responseJSON.error);
+                $('#loginSend').prop('disabled', false);
             }
         });
     });

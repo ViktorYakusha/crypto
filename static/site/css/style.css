@@ -62,10 +62,10 @@ img {
 }
 
 .navbar-brand {
-    font-size: 30px;
-    color: #fff;
-    font-weight: 500;
-    text-transform: capitalize;
+    background-image: url('../img/logo_desc_white.svg');
+    width: 180px;
+    height: 40px;
+    display: block;
 }
 
 .navbar .nav-item {
@@ -108,6 +108,15 @@ img {
 
 .registration {
     margin-inline-start: 16px;
+}
+
+.logout {
+    font-size: 24px;
+    color: var(--color-5);
+}
+
+.logout:hover {
+    color: var(--main-color);
 }
 
 /* ===== Home Section ===== */
@@ -366,6 +375,7 @@ img {
         line-height: 24px;
     }
 }
+
 @media (max-width: 991px) {
     .navbar-toggler {
         background-color: var(--main-to-dark-color);
@@ -448,7 +458,7 @@ img {
     }
 }
 
-@media (max-width: 575) {
+@media (max-width: 575px) {
     .home-text h1{
         font-size: 30px;
     }
@@ -461,41 +471,6 @@ img {
         font-size: 30px;
     }
 
-}
-
-.btn {
-    border-radius: 12px;
-    padding: 12px 24px;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-}
-
-.btn-success {
-    background-color: var(--color-3);
-}
-
-.btn-success:hover {
-    background-color: var(--color-4);
-}
-
-.btn-outline-primary {
-    color: var(--color-3);
-    border-color: var(--color-3);
-}
-
-p {
-    font-size: 14px;
-    line-height: 24px;
-}
-
-a {
-    color: var(--color-3);
-    text-decoration: underline;
-}
-
-a:hover {
-    color: var(--color-4);
 }
 
 .mmodal {
@@ -531,6 +506,7 @@ a:hover {
     font-size: 20px;
     position: absolute;
     right: 16px;
+    top: 16px;
 }
 
 .modal-content .title {
@@ -538,6 +514,7 @@ a:hover {
     font-size: 24px;
     line-height: 32px;
     font-weight: bold;
+    margin: 1rem 0;
 }
 
 .modal-content button {

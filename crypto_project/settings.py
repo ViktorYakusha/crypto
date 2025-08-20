@@ -7,7 +7,6 @@ load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-sys.path.insert(0, os.path.join(Path(__file__).resolve().parent, 'apps'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -29,8 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'authtools',
     'phonenumber_field',
-    'customer.apps.CustomerConfig',
-    'main.apps.MainConfig',
+    'crypto_project.customer',
+    'crypto_project.main',
 ]
 
 AUTH_USER_MODEL = 'authtools.User'
@@ -121,4 +120,16 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+USE_I18N = True
+USE_L10N = True
+
+LANGUAGE_CODE = 'ru-ru'
+
+LANGUAGES = [
+    ('en', 'English'),
+    ('ru', 'Русский'),
+]
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = '/'
