@@ -27,7 +27,7 @@ header {
     margin-left: 32px;
 }
 
-.nav li:last-child {
+.nav li:first-child {
     margin-left: 0;
 }
 

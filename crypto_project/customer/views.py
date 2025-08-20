@@ -61,3 +61,24 @@ def customer_profile(request):
     if customer is None:
         raise Http404("Item not found")
     return render(request, 'profile.html', {'customer': customer})
+
+@login_required
+def customer_profile_account(request):
+    customer = request.user.customer
+    if customer is None:
+        raise Http404("Item not found")
+    return render(request, 'account.html', {'customer': customer})
+
+@login_required
+def customer_profile_bills(request):
+    customer = request.user.customer
+    if customer is None:
+        raise Http404("Item not found")
+    return render(request, 'bills.html', {'customer': customer})
+
+@login_required
+def customer_profile_settings(request):
+    customer = request.user.customer
+    if customer is None:
+        raise Http404("Item not found")
+    return render(request, 'settings.html', {'customer': customer})
