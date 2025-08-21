@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from django.http import Http404
 from authtools.forms import UserCreationForm
 
 from .forms import CustomerRegistrationForm
@@ -57,28 +56,16 @@ def customer_logout(request):
 
 @login_required
 def customer_profile(request):
-    customer = request.user.customer
-    if customer is None:
-        raise Http404("Item not found")
-    return render(request, 'profile.html', {'customer': customer})
+    return render(request, 'profile.html')
 
 @login_required
 def customer_profile_account(request):
-    customer = request.user.customer
-    if customer is None:
-        raise Http404("Item not found")
-    return render(request, 'account.html', {'customer': customer})
+    return render(request, 'account.html')
 
 @login_required
 def customer_profile_bills(request):
-    customer = request.user.customer
-    if customer is None:
-        raise Http404("Item not found")
-    return render(request, 'bills.html', {'customer': customer})
+    return render(request, 'bills.html')
 
 @login_required
 def customer_profile_settings(request):
-    customer = request.user.customer
-    if customer is None:
-        raise Http404("Item not found")
-    return render(request, 'settings.html', {'customer': customer})
+    return render(request, 'settings.html')
