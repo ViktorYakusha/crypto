@@ -5,8 +5,4 @@ from crypto_project.customer.models import Customer
 
 
 def homepage(request):
-    try:
-        customer = request.user.customer
-    except AttributeError:
-        customer = None
-    return render(request, "homepage.html", {'customer': customer})
+    return render(request, "homepage.html", {})

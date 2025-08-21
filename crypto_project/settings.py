@@ -43,6 +43,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'crypto_project.customer.middleware.customer_middleware.CustomerMiddleware',
 ]
 
 ROOT_URLCONF = 'crypto_project.urls'
@@ -129,5 +131,7 @@ LANGUAGES = [
     ('en', 'English'),
     ('ru', 'Русский'),
 ]
+
+LOGIN_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

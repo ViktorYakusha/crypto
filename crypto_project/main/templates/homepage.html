@@ -46,7 +46,7 @@
             </div>
 
             <div class="col d-flex align-items-center justify-content-center text-end">
-                {% if not customer %}
+                {% if not request.customer %}
                 <button type="button" class="btn btn-outline-light openLoginModal">Войти</button>
                 <button type="button" class="btn btn-success registration openRegistrationModal">Регистрация</button>
                 {% else %}
