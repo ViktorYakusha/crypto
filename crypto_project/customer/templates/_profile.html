@@ -1,0 +1,38 @@
+<div class="card profile-info d-flex flex-row">
+    <span class="profile-info-icon d-flex align-items-center justify-content-center">
+        <i class="icon icon-user"></i>
+    </span>
+    <div class="profile-info-wrapp">
+        <span>{{ request.customer.user.name }}</span>
+        <table class="profile-table table align-middle">
+          <tbody>
+            <tr>
+              <td class="text-start no-border">Номер счета:</td>
+              <td class="text-end no-border">{{ request.customer.iban|truncatechars:9 }}</td>
+            </tr>
+            <tr>
+              <td class="text-start">Баланс:</td>
+              <td class="text-end balance">10 000.00$</td>
+            </tr>
+            <tr>
+              <td class="text-start no-border">Телефон:</td>
+              <td class="text-end no-border">{{ request.customer.user.phone_number }}</td>
+            </tr>
+            <tr>
+              <td class="text-start no-border">Email:</td>
+              <td class="text-end no-border">{{ request.customer.user.email }}</td>
+            </tr>
+            <tr>
+              <td class="text-start no-border">Верификация:</td>
+              <td class="text-end no-border {% if request.customer.is_verified %}verifications{% else %}verifications-false{% endif %}">
+                  {% if request.customer.is_verified %}
+                  <i class="icon icon-check-circle"></i> Пройдена
+                  {% else %}
+                  <i class="icon icon-cancel"></i> Не пройдена
+                  {% endif %}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>

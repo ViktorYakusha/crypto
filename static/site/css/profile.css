@@ -4,6 +4,13 @@
 /* === Global Css === */
 @import url('./root.css');
 
+/* ================= media ================*/
+@media (min-width: 1920px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1808px;
+    }
+}
+
 body {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
@@ -19,16 +26,20 @@ body {
     border-bottom: 1px solid var(--color-border);
 }
 
-header {
-
-}
-
 .nav li {
     margin-left: 32px;
 }
 
 .nav li:first-child {
     margin-left: 0;
+}
+
+.nav-pills li {
+    margin-left: 16px;
+}
+
+.nav-pills li:first-child {
+    margin-left: 24px;
 }
 
 .nav-link {
@@ -69,4 +80,148 @@ header {
     border-radius: 16px;
     padding: 24px;
     border: none;
+}
+
+.contacts-icon {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    font-size: 40px;
+    margin-inline-end: 24px;
+    background-color: var(--color-5);
+}
+
+.contacts {
+    padding: 50px 0;
+}
+
+.contacts-text p {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 6px;
+}
+
+.contacts-text a {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 32px;
+    text-decoration: none;
+}
+
+.contacts-text a:hover {
+    text-decoration: underline;
+}
+
+thead tr th {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    color: var(--color-1) !important;
+    background-color: var(--color-5) !important;
+    text-align: center;
+    border-top-width: 1px !important;
+    border-bottom-width: 1px !important;
+    box-shadow: none !important;
+}
+
+tbody tr td {
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--main-color) !important;
+    background-color: var(--bg-white) !important;
+}
+
+.nav-pills .tab-link.active, .nav-pills .show>.tab-link {
+    color: var(--color-3);
+    background-color: var(--bg-white);
+}
+
+.nav-pills .tab-link {
+    border-radius: 0;
+}
+
+.tab-link {
+    padding: 12px 16px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--color-1);
+}
+
+.empty {
+    text-align: center;
+    padding: 32px 0;
+}
+
+.empty .icon {
+    font-size: 40px;
+    color: var(--color-1);
+}
+
+.empty p{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+
+.profile-info-wrapp {
+    width: 100%;
+}
+
+.profile-info-wrapp span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 4px;
+}
+
+.profile-info-icon {
+    width: 75px;
+    min-width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    font-size: 40px;
+    margin-inline-end: 24px;
+    color: var(--color-3);
+    background-color: var(--color-6);
+}
+
+.profile-table {
+    margin-bottom: 0;
+}
+
+.profile-table td {
+    padding: 4px 0;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.profile-table tr td:first-child {
+    font-size: 12px;
+    color: var(--color-1) !important;
+}
+
+.profile-table .balance {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--main-color) !important;
+}
+
+.profile-table .verifications,
+.profile-table .verifications-false {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-3) !important;
+}
+
+.profile-table .verifications-false {
+    font-weight: 400;
+    color: var(--color-7) !important;
+}
+
+.no-border {
+    border-bottom-width: 0 !important;
 }

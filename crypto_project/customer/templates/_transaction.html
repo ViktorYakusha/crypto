@@ -1,0 +1,70 @@
+<div class="card p-0">
+    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link tab-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Открытые сделки</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link tab-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Закрытые сделки</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th>Актив</th>
+                  <th>Сумма</th>
+                  <th>Время открытия</th>
+                  <th>Время закрытия</th>
+                  <th>Осталось</th>
+                  <th>Профит</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>EUR/USD</td>
+                  <td>1 000</td>
+                  <td>11.06.25, 21:32:45</td>
+                  <td>11.06.25, 21:42:45</td>
+                  <td>10м</td>
+                  <td>+ 810</td>
+                </tr>
+                <tr>
+                  <td>EUR/USD</td>
+                  <td>1 000</td>
+                  <td>11.06.25, 21:32:45</td>
+                  <td>11.06.25, 21:42:45</td>
+                  <td>10м</td>
+                  <td>+ 810</td>
+                </tr>
+                <tr>
+                  <td>EUR/USD</td>
+                  <td>1 000</td>
+                  <td>11.06.25, 21:32:45</td>
+                  <td>11.06.25, 21:42:45</td>
+                  <td>10м</td>
+                  <td>+ 810</td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th>Актив</th>
+                  <th>Сумма</th>
+                  <th>Время открытия</th>
+                  <th>Время закрытия</th>
+                  <th>Осталось</th>
+                  <th>Профит</th>
+                </tr>
+              </thead>
+            </table>
+            <div class="empty">
+              <i class="icon icon-no-orders"></i>
+              <p>Нет открытых сделок</p>
+            </div>
+      </div>
+    </div>
+</div>

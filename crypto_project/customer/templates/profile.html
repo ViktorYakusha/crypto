@@ -11,16 +11,13 @@
     </div>
       <div class="row">
         <div class="col-3">
-            <div class="card">
-                {{ request.customer.iban }}
-                {{ request.customer.user.name }}
-            </div>
+            {% include "_profile.html" %}
         </div>
-        <div class="col-7">
-            <div class="card">asdasd</div>
+        <div class="col-6">
+            {% include "_transaction.html" %}
         </div>
-        <div class="col-2">
-          <div class="card">asdasd</div>
+        <div class="col-3">
+          {% include "_contacts.html" %}
         </div>
       </div>
     </div>
