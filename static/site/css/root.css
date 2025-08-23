@@ -7,6 +7,7 @@
     --color-5: #F8F8FA;
     --color-6: #E9F4EE;
     --color-7: #FF4236;
+    --color-8: #D0271C;
     --color-border: #EAEAEB;
     --bg-white: #ffffff;
     --bg-dark: #2b2c2f;
@@ -36,6 +37,14 @@
     background-color: var(--color-4);
 }
 
+.btn-danger {
+    background-color: var(--color-7);
+}
+
+.btn-danger:hover {
+    background-color: var(--color-8);
+}
+
 .btn-outline-primary {
     color: var(--color-3);
     border-color: var(--color-3);
@@ -53,4 +62,26 @@ a {
 
 a:hover {
     color: var(--color-4);
+}
+
+
+label {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.form-select,
+.form-control {
+    border-radius: 12px;
+    color: var(--color-1);
+    font-size: 14px;
+    border: 1px solid var(--color-border);
+    height: 48px;
+}
+
+.form-select:focus,
+.form-control:focus {
+    border-color: var(--color-3);
+    color: var(--main-color);
+    box-shadow: none;
 }

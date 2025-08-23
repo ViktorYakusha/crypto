@@ -1,0 +1,96 @@
+<div class="card">
+    <div class="row mb-3">
+        <div class="col" style="height:644px;min-height:644px;">
+            <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container" style="height:100%;width:100%">
+              <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+              {
+              "allow_symbol_change": true,
+              "calendar": false,
+              "details": false,
+              "hide_side_toolbar": true,
+              "hide_top_toolbar": false,
+              "hide_legend": false,
+              "hide_volume": false,
+              "hotlist": false,
+              "interval": "D",
+              "locale": "ru",
+              "save_image": true,
+              "style": "1",
+              "symbol": "FX:EURUSD",
+              "theme": "light",
+              "timezone": "Etc/UTC",
+              "backgroundColor": "#ffffff",
+              "gridColor": "rgba(46, 46, 46, 0.06)",
+              "watchlist": [
+                "OANDA:GBPUSD",
+                "OANDA:USDJPY",
+                "OANDA:USDCHF",
+                "OANDA:AUDUSD",
+                "OANDA:EURUSD"
+              ],
+              "withdateranges": false,
+              "compareSymbols": [],
+              "studies": [],
+              "autosize": true
+            }
+              </script>
+            </div>
+            <!-- TradingView Widget END -->
+        </div>
+    </div>
+
+    {% if request.customer.balance %}
+    <form class="bill">
+        <div class="row">
+          <div class="col-3">
+                <label for="quotes" class="form-label">Котировка</label>
+                <select class="form-select" name="quotes" id="quotes" aria-label="Котировка">
+                  <option selected>Выберите котировку</option>
+                  <option value="GBPUSD">GBP/USD</option>
+                  <option value="USDJPY">USD/JPY</option>
+                  <option value="USDCHF">USD/CHF</option>
+                  <option value="AUDUSD">AUD/USD</option>
+                  <option value="EURUSD">EUR/USD</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col">
+                        <label for="summa" class="form-label">Сумма</label>
+                        <input type="number" min="0" name="summa" id="summa" class="form-control" placeholder="Введите сумму" aria-label="Введите сумму">
+                    </div>
+                    <div class="col">
+                        <label for="duration" class="form-label">Время сделки</label>
+                        <select class="form-select" name="duration" id="duration" aria-label="Время сделки">
+                          <option selected>Выберите время длительности сделки</option>
+                          <option value="1">1 мин</option>
+                          <option value="5">5 мин</option>
+                          <option value="15">15 мин</option>
+                          <option value="30">30 мин</option>
+                          <option value="60">1 час</option>
+                          <option value="240">4 часа</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row mt-4">
+                    <div class="col">
+                        <button type="submit" class="btn btn-success w-100">Купить</button>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-danger w-100">Продать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    {% else %}
+        <div class="empty-balance text-center py-2">
+            <span>Недостаточно средтсв, необходимо пополнить счет!</span>
+            <button type="button" class="btn btn-success ms-4">Пополнение</button>
+        </div>
+    {% endif %}
+</div>

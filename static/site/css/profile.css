@@ -225,3 +225,10 @@ tbody tr td {
 .no-border {
     border-bottom-width: 0 !important;
 }
+
+.empty-balance span {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 6px;
+}

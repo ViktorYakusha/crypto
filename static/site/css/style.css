@@ -527,22 +527,3 @@ img {
   text-decoration: none;
   cursor: pointer;
 }
-
-label {
-    font-size: 12px;
-    line-height: 16px;
-}
-
-.form-control {
-    border-radius: 12px;
-    color: var(--color-1);
-    font-size: 14px;
-    border: 1px solid var(--color-border);
-    height: 48px;
-}
-
-.form-control:focus {
-    border-color: var(--color-3);
-    color: var(--main-color);
-    box-shadow: none;
-}

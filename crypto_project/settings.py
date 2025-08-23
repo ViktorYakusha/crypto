@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'authtools',
     'phonenumber_field',
+    'djmoney',
     'crypto_project.customer',
     'crypto_project.main',
 ]
