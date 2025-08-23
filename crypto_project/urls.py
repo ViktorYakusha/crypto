@@ -17,6 +17,7 @@ urlpatterns = [
     path('profile/bills', customer_views.customer_profile_bills, name='customer_profile_bills'),
     path('profile/settings', customer_views.customer_profile_settings, name='customer_profile_settings'),
     path('registration', customer_views.customer_registration, name='customer_registration'),
+    path('create-bet', customer_views.customer_create_bet, name='customer_create_bet'),
     path('', main_views.homepage, name='homepage'),
     path(os.getenv('ADMIN_URL'), admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + debug_toolbar_urls()

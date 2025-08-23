@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block prifile_content %}
+{% block profile_content %}
     <div class="container">
     <div class="row mb-4">
         <div class="col">
@@ -21,4 +21,62 @@
         </div>
       </div>
     </div>
+{% endblock %}
+
+{% block custom_js %}
+    <!-- main js file -->
+    <script src="{% static 'site/js/profile.js' %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            let timeoutID = null;
+            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            const balance = parseFloat(document.querySelector('[name=balance]').value, 10).toFixed(2);
+            const billForm = document.getElementById('bill');
+            const buyBill = document.getElementById('buyBill');
+            const sellBill = document.getElementById('sellBill');
+            const quotationInput = document.getElementById('quotation');
+            const summaInput = document.getElementById('summa');
+            const durationInput = document.getElementById('duration');
+
+            function validate(){
+                if (!!quotationInput.value && !!durationInput.value && Number(summaInput.value) > 0 && Number(balance) >= Number(summaInput.value)) {
+                    buyBill.disabled = false;
+                    sellBill.disabled = false;
+                } else {
+                    buyBill.disabled = true;
+                    sellBill.disabled = true;
+                }
+            }
+
+            summaInput.addEventListener("keyup", () => {
+                clearTimeout(timeoutID);
+                timeoutID = setTimeout(validate, 100);
+            });
+
+
+            billForm.addEventListener('change', function() {
+              validate()
+            });
+
+            billForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                $.ajax({
+                    url: '/create-bet',
+                    type: 'POST',
+                    data: $(this).serialize() + '&type=' + event.submitter.dataset.type,
+                    headers: {
+                        'X-CSRFToken': csrftoken
+                    },
+                    success: function(response) {
+                        debugger
+                    },
+                    error: function(xhr, status, error) {
+                        debugger
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}

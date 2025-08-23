@@ -1,5 +1,5 @@
 from django import forms
-from .models import Customer
+from .models import Customer, Bet
 
 class CustomerRegistrationForm(forms.ModelForm):
     class Meta:
@@ -21,3 +21,9 @@ class CustomerRegistrationForm(forms.ModelForm):
     # #                                          phone_number=self.cleaned_data['phone_number'],
     # #                                          address=self.cleaned_data['address'])
     # #     return user
+
+
+class BetForm(forms.ModelForm):
+    class Meta:
+        model = Bet
+        fields = ('quotation', 'type', 'summa')
