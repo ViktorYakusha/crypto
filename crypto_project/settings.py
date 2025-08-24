@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'authtools',
     'phonenumber_field',
+    'django_cron',
     'django_crontab',
     'crypto_project.customer',
     'crypto_project.main',
