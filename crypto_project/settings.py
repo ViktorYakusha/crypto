@@ -28,17 +28,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'authtools',
     'phonenumber_field',
-    'django_cron',
-    'django_crontab',
     'crypto_project.customer',
     'crypto_project.main',
 ]
 
 AUTH_USER_MODEL = 'authtools.User'
-
-CRONJOBS = [
-    ('1 * * * *', 'crypto_project.customer.cron.close_bet_job')
-]
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
