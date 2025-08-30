@@ -3,11 +3,14 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
+from celery import shared_task
 from authtools.forms import UserCreationForm
 from django.utils import timezone
 from datetime import timedelta
+import time
 
 from .forms import CustomerRegistrationForm, BetForm
+from .models import Bet
 
 
 @csrf_protect
@@ -47,7 +50,8 @@ def customer_create_bet(request):
                 profit = profit * -1
             bet.profit = profit
             bet.save()
-
+            # celery close task
+            close_bet.apply_async((bet.id,), eta=bet.close_date)
             # update customer balance
             request.user.customer.balance = round(request.user.customer.balance - summa, 2)
             request.user.customer.save()
@@ -89,7 +93,10 @@ def customer_logout(request):
 
 @login_required
 def customer_profile(request):
-    return render(request, 'profile.html')
+    customer = request.user.customer
+    closed_bets = Bet.objects.filter(customer=customer, entry__gt=0).order_by('-open_date')
+    opened_bets = Bet.objects.filter(customer=customer, entry=0).order_by('-open_date')
+    return render(request, 'profile.html', {'closed_bets': closed_bets, 'opened_bets': opened_bets})
 
 @login_required
 def customer_profile_account(request):
@@ -102,3 +109,13 @@ def customer_profile_bills(request):
 @login_required
 def customer_profile_settings(request):
     return render(request, 'settings.html')
+
+
+@shared_task
+def close_bet(bet_id):
+    bet = Bet.objects.get(id=bet_id)
+    bet.entry = round(bet.summa + bet.profit, 2)
+    bet.save()
+    bet.customer.balance = round(bet.customer.balance + bet.entry, 2)
+    bet.customer.save()
+    print('Closing bet---------------- {}'.format(bet_id))

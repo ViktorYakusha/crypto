@@ -20,33 +20,27 @@
                   <th>Профит</th>
                 </tr>
               </thead>
-              <tbody>
+              {% if opened_bets|length  %}
+                <tbody>
+                {% for bet in opened_bets %}
                 <tr>
-                  <td>EUR/USD</td>
-                  <td>1 000</td>
-                  <td>11.06.25, 21:32:45</td>
-                  <td>11.06.25, 21:42:45</td>
-                  <td>10м</td>
-                  <td>+ 810</td>
+                  <td>{{ bet.quotation }}</td>
+                  <td>{{ bet.summa }}</td>
+                  <td>{{ bet.open_date|date:"d.m.Y, H:i:s" }}</td>
+                  <td>{{ bet.close_date|date:"d.m.Y, H:i:s" }}</td>
+                  <td>---</td>
+                  <td>{{ bet.profit }}</td>
                 </tr>
-                <tr>
-                  <td>EUR/USD</td>
-                  <td>1 000</td>
-                  <td>11.06.25, 21:32:45</td>
-                  <td>11.06.25, 21:42:45</td>
-                  <td>10м</td>
-                  <td>+ 810</td>
-                </tr>
-                <tr>
-                  <td>EUR/USD</td>
-                  <td>1 000</td>
-                  <td>11.06.25, 21:32:45</td>
-                  <td>11.06.25, 21:42:45</td>
-                  <td>10м</td>
-                  <td>+ 810</td>
-                </tr>
-              </tbody>
+                {% endfor %}
+                </tbody>
+            {% endif %}
             </table>
+            {% if not opened_bets|length %}
+            <div class="empty">
+              <i class="icon icon-no-orders"></i>
+              <p>Нет открытых сделок</p>
+            </div>
+            {% endif %}
       </div>
       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
           <table class="table">
@@ -56,15 +50,29 @@
                   <th>Сумма</th>
                   <th>Время открытия</th>
                   <th>Время закрытия</th>
-                  <th>Осталось</th>
                   <th>Профит</th>
                 </tr>
               </thead>
+              {% if closed_bets|length  %}
+                <tbody>
+                {% for bet in closed_bets %}
+                <tr>
+                  <td>{{ bet.quotation }}</td>
+                  <td>{{ bet.summa }}</td>
+                  <td>{{ bet.open_date|date:"d.m.Y, H:i:s" }}</td>
+                  <td>{{ bet.close_date|date:"d.m.Y, H:i:s" }}</td>
+                  <td>{{ bet.profit }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            {% endif %}
             </table>
+            {% if not closed_bets|length %}
             <div class="empty">
               <i class="icon icon-no-orders"></i>
-              <p>Нет открытых сделок</p>
+              <p>Нет закрытых сделок</p>
             </div>
+            {% endif %}
       </div>
     </div>
 </div>
