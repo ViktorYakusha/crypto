@@ -18,6 +18,8 @@ DEBUG = (os.getenv('DEBUG', 'False') == 'True')
 
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
 
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
+
 INSTALLED_APPS = [
     'debug_toolbar',
     'django.contrib.admin',
