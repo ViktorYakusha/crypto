@@ -334,7 +334,7 @@ img {
 }
 
 .contact-form {
-    width: 450px;
+    max-width: 450px;
     border-radius: var(--block-radius);
     padding: 32px;
     margin: 0 auto;
