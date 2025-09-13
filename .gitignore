@@ -33,6 +33,7 @@ var/
 media/
 static_collected/
 staticfiles/
+static_files/
 
 # IDEs and other tools
 .idea/
