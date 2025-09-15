@@ -22,24 +22,44 @@
     <div class="container-header mb-3">
         <div class="container">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
-                <div class="col-md-3 mb-2 mb-md-0">
-                    <a href="{% url 'homepage' %}" class="navbar-brand">
+                <div class="col col-md-2">
+                    <a href="{% url 'homepage' %}" class="d-none d-md-flex navbar-brand">
                         <svg width="180" height="40" role="img" src="img/logo_desc_green.svg"></svg>
+                    </a>
+                    <a href="{% url 'homepage' %}" class="d-md-none navbar-brand-mob">
+                        <svg width="30" height="40" role="img" src="img/logo_mob_green.svg"></svg>
                     </a>
                 </div>
                 {% with request.resolver_match.url_name as url_name %}
-                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <ul class="nav col-12 d-none d-xl-flex col-md-auto justify-content-center">
                     <li><a href="{% url 'customer_profile' %}" class="nav-link {% if url_name == 'customer_profile' %}active{% endif %}">Платформа</a></li>
                     <li><a href="{% url 'customer_profile_bills' %}" class="nav-link {% if url_name == 'customer_profile_bills' %}active{% endif %}">Счета</a></li>
                     <li><a href="{% url 'customer_profile_account' %}" class="nav-link {% if url_name == 'customer_profile_account' %}active{% endif %}">Аккаунт</a></li>
                     <li><a href="{% url 'customer_profile_settings' %}" class="nav-link {% if url_name == 'customer_profile_settings' %}active{% endif %}">Настройки</a></li>
                  </ul>
                 {% endwith %}
-                <div class="col-md-3 text-end">
+                <div class="col col-xl-3 text-end">
                     <button type="button" class="btn btn-success me-3">Пополнение</button>
-                    <a class="logout" href="{% url 'customer_logout' %}">
+                    <a class="logout d-none d-xl-inline" href="{% url 'customer_logout' %}">
                         <i class="icon icon-logout"></i>
                     </a>
+                </div>
+                <div class="col-2 col-md-1 d-xl-none">
+                    <div class="burger-menu d-block d-xl-none">
+                      <a href="" class="burger-menu_button">
+                        <span class="burger-menu_lines"></span>
+                      </a>
+                      {% with request.resolver_match.url_name as url_name %}
+                      <nav class="burger-menu_nav">
+                        <a href="{% url 'customer_profile' %}" class="nav-link {% if url_name == 'customer_profile' %}active{% endif %}">Платформа</a>
+                        <a href="{% url 'customer_profile_bills' %}" class="nav-link {% if url_name == 'customer_profile_bills' %}active{% endif %}">Счета</a>
+                        <a href="{% url 'customer_profile_account' %}" class="nav-link {% if url_name == 'customer_profile_account' %}active{% endif %}">Аккаунт</a>
+                        <a href="{% url 'customer_profile_settings' %}" class="nav-link {% if url_name == 'customer_profile_settings' %}active{% endif %}">Настройки</a>
+                        <a class="logout nav-link" href="{% url 'customer_logout' %}"><i class="icon icon-logout"></i></a>
+                      </nav>
+                      {% endwith %}
+                      <div class="burger-menu_overlay"></div>
+                    </div>
                 </div>
             </header>
         </div>

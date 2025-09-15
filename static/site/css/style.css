@@ -50,7 +50,7 @@ img {
 
 /* ==== navbar ==== */
 .navbar {
-    padding: 20px 0;
+    padding: 18px 0;
     border-bottom: 1px solid var(--color-1);
     position: absolute;
     z-index: 2;

@@ -45,24 +45,24 @@
     <form class="bill" id="bill">
         <input type="hidden" name="balance" value="{{ request.customer.balance }}">
         <div class="row">
-          <div class="col-3">
-                <label for="quotation" class="form-label">Котировка</label>
-                <select class="form-select" name="quotation" id="quotation" aria-label="Котировка">
-                  <option value="" selected>Выберите котировку</option>
-                  <option value="GBPUSD">GBP/USD</option>
-                  <option value="USDJPY">USD/JPY</option>
-                  <option value="USDCHF">USD/CHF</option>
-                  <option value="AUDUSD">AUD/USD</option>
-                  <option value="EURUSD">EUR/USD</option>
-                </select>
-            </div>
-            <div class="col-6">
+            <div class="col-12 col-xl-9">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-12 col-md-4">
+                        <label for="quotation" class="form-label">Котировка</label>
+                        <select class="form-select" name="quotation" id="quotation" aria-label="Котировка">
+                          <option value="" selected>Выберите котировку</option>
+                          <option value="GBPUSD">GBP/USD</option>
+                          <option value="USDJPY">USD/JPY</option>
+                          <option value="USDCHF">USD/CHF</option>
+                          <option value="AUDUSD">AUD/USD</option>
+                          <option value="EURUSD">EUR/USD</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-4">
                         <label for="summa" class="form-label">Сумма</label>
                         <input type="number" min="0" name="summa" id="summa" class="form-control" placeholder="Введите сумму" aria-label="Введите сумму">
                     </div>
-                    <div class="col">
+                    <div class="col-12 col-md-4">
                         <label for="duration" class="form-label">Время сделки</label>
                         <select class="form-select" name="duration" id="duration" aria-label="Время сделки">
                           <option value="" selected>Выберите время длительности сделки</option>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-12 col-xl-3">
                 <div class="row mt-4">
                     <div class="col">
                         <button type="submit" id="buyBill" data-type="buy" disabled class="btn btn-success w-100">Купить</button>

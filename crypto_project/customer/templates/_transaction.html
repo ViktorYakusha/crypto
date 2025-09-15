@@ -1,14 +1,14 @@
 <div class="card p-0">
-    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+    <ul class="d-none d-md-flex nav nav-pills" id="pills-tab" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link tab-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Открытые сделки</button>
+        <button class="nav-link tab-link active" id="pills-open-tab" data-bs-toggle="pill" data-bs-target="#pills-open" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Открытые сделки</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link tab-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Закрытые сделки</button>
+        <button class="nav-link tab-link" id="pills-close-tab" data-bs-toggle="pill" data-bs-target="#pills-close" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Закрытые сделки</button>
       </li>
     </ul>
-    <div class="tab-content" id="pills-tabContent">
-      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+    <div class="d-none d-md-block tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-open" role="tabpanel" aria-labelledby="pills-open-tab" tabindex="0">
           <table class="table">
               <thead>
                 <tr>
@@ -42,7 +42,7 @@
             </div>
             {% endif %}
       </div>
-      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+      <div class="tab-pane fade" id="pills-close" role="tabpanel" aria-labelledby="pills-close-tab" tabindex="0">
           <table class="table">
               <thead>
                 <tr>
@@ -73,6 +73,103 @@
               <p>Нет закрытых сделок</p>
             </div>
             {% endif %}
+        </div>
+    </div>
+
+    <ul class="d-flex d-md-none nav nav-pills" id="pills-mob-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link tab-link active" id="pills-mob-open-tab" data-bs-toggle="pill" data-bs-target="#pills-mob-open" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Открытые сделки</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link tab-link" id="pills-mob-close-tab" data-bs-toggle="pill" data-bs-target="#pills-mob-close" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Закрытые сделки</button>
+      </li>
+    </ul>
+    <div class="d-block d-md-none tab-content" id="pills-mob-tabContent">
+      <div class="tab-pane fade show active" id="pills-mob-open" role="tabpanel" aria-labelledby="pills-mob-open-tab" tabindex="0">
+          <div class="row">
+              <div class="col m-4">
+                  {% if opened_bets|length  %}
+                      {% for bet in opened_bets %}
+                        <table class="p-4 profile-table table align-middle">
+                          <tbody>
+                            <tr>
+                              <td class="text-start no-border">Актив</td>
+                              <td class="text-end no-border">{{ bet.quotation }}</td>
+                            </tr>
+                            <tr>
+                              <td class="text-start no-border">Сума</td>
+                              <td class="text-end no-border">{{ bet.summa }}</td>
+                            </tr>
+                            <tr>
+                              <td class="text-start no-border">Время открытия</td>
+                              <td class="text-end no-border">{{ bet.open_date|date:"d.m.Y, H:i:s" }}</td>
+                            </tr>
+                            <tr>
+                              <td class="text-start no-border">{{ bet.close_date|date:"d.m.Y, H:i:s" }}</td>
+                              <td class="text-end no-border">11.06.25, 21:32:45</td>
+                            </tr>
+                            <tr>
+                              <td class="text-start no-border">Зачислено</td>
+                              <td class="text-end no-border">---</td>
+                            </tr>
+                            <tr>
+                              <td class="text-start no-border">Профит</td>
+                              <td class="text-end no-border">{{ bet.profit }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      {% endfor %}
+                  {% else%}
+                    <div class="empty">
+                      <i class="icon icon-no-orders"></i>
+                      <p>Нет открытых сделок</p>
+                    </div>
+                  {% endif %}
+              </div>
+          </div>
       </div>
+      <div class="tab-pane fade" id="pills-mob-close" role="tabpanel" aria-labelledby="pills-mob-close-tab" tabindex="0">
+          <div class="row">
+              <div class="col m-4">
+                  {% if closed_bets|length  %}
+                      {% for bet in closed_bets %}
+                        <table class="p-4 profile-table table align-middle">
+                          <tbody>
+                            <tr>
+                              <td class="text-start no-border">Актив</td>
+                              <td class="text-end no-border">{{ bet.quotation }}</td>
+                            </tr>
+                            <tr>
+                              <td class="text-start no-border">Сума</td>
+                              <td class="text-end no-border">{{ bet.summa }}</td>
+                            </tr>
+                            <tr>
+                              <td class="text-start no-border">Время открытия</td>
+                              <td class="text-end no-border">{{ bet.open_date|date:"d.m.Y, H:i:s" }}</td>
+                            </tr>
+                            <tr>
+                              <td class="text-start no-border">{{ bet.close_date|date:"d.m.Y, H:i:s" }}</td>
+                              <td class="text-end no-border">11.06.25, 21:32:45</td>
+                            </tr>
+                            <tr>
+                              <td class="text-start no-border">Зачислено</td>
+                              <td class="text-end no-border">---</td>
+                            </tr>
+                            <tr>
+                              <td class="text-start no-border">Профит</td>
+                              <td class="text-end no-border">{{ bet.profit }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      {% endfor %}
+                  {% else%}
+                    <div class="empty">
+                      <i class="icon icon-no-orders"></i>
+                      <p>Нет закрытых сделок</p>
+                    </div>
+                  {% endif %}
+              </div>
+          </div>
+        </div>
     </div>
 </div>
