@@ -285,6 +285,16 @@ tbody tr td {
     color: var(--color-1);
 }
 
+.mob-bet {
+    border-bottom: 2px solid var(--color-border) !important;
+    margin-bottom: 16px !important;
+}
+
+.mob-bet:last-child {
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+}
+
 .empty {
     text-align: center;
     padding: 20px 0;

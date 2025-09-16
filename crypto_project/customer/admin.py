@@ -1,17 +1,21 @@
 from django.contrib import admin
 
-from .models import Customer, Manager
+from .models import Customer, Manager, Comment
 
 
 class CustomerAdmin(admin.ModelAdmin):
-    fields = ["user", "first_name", "last_name", "email"]
+    list_display = ["user__name", "user__email", "manager__user__name", "balance", "is_verified"]
 
-
-admin.site.register(Customer)
+admin.site.register(Customer, CustomerAdmin)
 
 
 class ManagerAdmin(admin.ModelAdmin):
-    fields = ["user", "first_name", "last_name", "email"]
+    list_display = ["user__name", "user__email"]
+
+admin.site.register(Manager, ManagerAdmin)
 
 
-admin.site.register(Manager)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['customer__user__name', 'author__user__name', 'created_date']
+
+admin.site.register(Comment, CommentAdmin)

@@ -90,7 +90,7 @@
               <div class="col m-4">
                   {% if opened_bets|length  %}
                       {% for bet in opened_bets %}
-                        <table class="p-4 profile-table table align-middle">
+                        <table class="profile-table mob-bet table align-middle">
                           <tbody>
                             <tr>
                               <td class="text-start no-border">Актив</td>
@@ -105,16 +105,16 @@
                               <td class="text-end no-border">{{ bet.open_date|date:"d.m.Y, H:i:s" }}</td>
                             </tr>
                             <tr>
-                              <td class="text-start no-border">{{ bet.close_date|date:"d.m.Y, H:i:s" }}</td>
-                              <td class="text-end no-border">11.06.25, 21:32:45</td>
+                              <td class="text-start no-border">Время закрытия</td>
+                              <td class="text-end no-border">{{ bet.close_date|date:"d.m.Y, H:i:s" }}</td>
                             </tr>
                             <tr>
                               <td class="text-start no-border">Зачислено</td>
                               <td class="text-end no-border">---</td>
                             </tr>
                             <tr>
-                              <td class="text-start no-border">Профит</td>
-                              <td class="text-end no-border">{{ bet.profit }}</td>
+                              <td class="pb-3 text-start no-border">Профит</td>
+                              <td class="pb-3 text-end no-border">{{ bet.profit }}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -133,7 +133,7 @@
               <div class="col m-4">
                   {% if closed_bets|length  %}
                       {% for bet in closed_bets %}
-                        <table class="p-4 profile-table table align-middle">
+                        <table class="profile-table mob-bet table align-middle">
                           <tbody>
                             <tr>
                               <td class="text-start no-border">Актив</td>
@@ -148,16 +148,16 @@
                               <td class="text-end no-border">{{ bet.open_date|date:"d.m.Y, H:i:s" }}</td>
                             </tr>
                             <tr>
-                              <td class="text-start no-border">{{ bet.close_date|date:"d.m.Y, H:i:s" }}</td>
-                              <td class="text-end no-border">11.06.25, 21:32:45</td>
+                              <td class="text-start no-border">Время закрытия</td>
+                              <td class="text-end no-border">{{ bet.close_date|date:"d.m.Y, H:i:s" }}</td>
                             </tr>
                             <tr>
                               <td class="text-start no-border">Зачислено</td>
                               <td class="text-end no-border">---</td>
                             </tr>
                             <tr>
-                              <td class="text-start no-border">Профит</td>
-                              <td class="text-end no-border">{{ bet.profit }}</td>
+                              <td class="pb-3 text-start no-border">Профит</td>
+                              <td class="pb-3 text-end no-border">{{ bet.profit }}</td>
                             </tr>
                           </tbody>
                         </table>

@@ -118,4 +118,5 @@ def close_bet(bet_id):
     bet.save()
     bet.customer.balance = round(bet.customer.balance + bet.entry, 2)
     bet.customer.save()
-    print('Closing bet---------------- {}'.format(bet_id))
+    print(bet.customer.balance)
+    print('Closing bet---------------- {} {}'.format(bet_id, bet.customer.id))

@@ -8,6 +8,12 @@ from django.utils import timezone
 class Manager(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
+    def __str__(self):
+        return '{name} <{email}>'.format(
+            name=self.user.name,
+            email=self.user.email,
+        )
+
     class Meta:
         app_label = 'customer'
 
@@ -48,6 +54,27 @@ class Customer(models.Model):
         choices=TRADING_CHOICES,
         default=POSITIVE,
     )
+
+    def __str__(self):
+        return '{name} <{email}>'.format(
+            name=self.user.name,
+            email=self.user.email,
+        )
+
+    class Meta:
+        app_label = 'customer'
+
+
+class Comment(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)
+    author = models.ForeignKey(Manager, on_delete=models.CASCADE, null=True, blank=True)
+    text = models.TextField()
+    created_date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return 'Comment to {name}'.format(
+            name=self.customer.user.name,
+        )
 
     class Meta:
         app_label = 'customer'
