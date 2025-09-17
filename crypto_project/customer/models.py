@@ -14,8 +14,7 @@ class Manager(models.Model):
                 name=self.user.name,
                 email=self.user.email,
             )
-        else:
-            return 'No user'
+        return ''
 
     class Meta:
         app_label = 'customer'
@@ -64,8 +63,7 @@ class Customer(models.Model):
                 name=self.user.name,
                 email=self.user.email,
             )
-        else:
-            return 'No user'
+        return ''
 
     class Meta:
         app_label = 'customer'
