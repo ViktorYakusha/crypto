@@ -6,7 +6,7 @@ from django.core.validators import RegexValidator
 from django.utils import timezone
 
 class Manager(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         if self.user and hasattr(self.user, 'name'):
