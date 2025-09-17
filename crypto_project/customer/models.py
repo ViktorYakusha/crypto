@@ -9,10 +9,13 @@ class Manager(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return '{name} <{email}>'.format(
-            name=self.user.name,
-            email=self.user.email,
-        )
+        if self.user and hasattr(self.user, 'name'):
+            return '{name} <{email}>'.format(
+                name=self.user.name,
+                email=self.user.email,
+            )
+        else:
+            return None
 
     class Meta:
         app_label = 'customer'
@@ -56,10 +59,13 @@ class Customer(models.Model):
     )
 
     def __str__(self):
-        return '{name} <{email}>'.format(
-            name=self.user.name,
-            email=self.user.email,
-        )
+        if self.user and hasattr(self.user, 'name'):
+            return '{name} <{email}>'.format(
+                name=self.user.name,
+                email=self.user.email,
+            )
+        else:
+            return None
 
     class Meta:
         app_label = 'customer'
