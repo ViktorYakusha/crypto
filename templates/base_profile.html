@@ -6,10 +6,10 @@
 
 {% block custom_css %}
     <!-- link to css file -->
-    <link rel="stylesheet" href="{% static 'site/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'site/css/style.css' %}?v={{ VERSION }}">
 
     <!-- link to css file -->
-    <link rel="stylesheet" href="{% static 'site/css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'site/css/profile.css' %}?v={{ VERSION }}">
 {% endblock %}
 
 {% block content %}
@@ -69,5 +69,5 @@
 
 {% block custom_js %}
     <!-- main js file -->
-    <script src="{% static 'site/js/profile.js' %}"></script>
+    <script src="{% static 'site/js/profile.js' %}?v={{ VERSION }}"></script>
 {% endblock %}

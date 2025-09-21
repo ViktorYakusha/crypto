@@ -1,5 +1,6 @@
 import os
 import sys
+import datetime
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -7,6 +8,7 @@ load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+VERSION = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
 
 
 # Quick-start development settings - unsuitable for production
@@ -64,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'crypto_project.main.context_processors.site_settings',
             ],
         },
     },

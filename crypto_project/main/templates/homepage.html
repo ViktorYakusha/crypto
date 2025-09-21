@@ -6,7 +6,7 @@
 
 {% block custom_css %}
     <!-- link to css file -->
-    <link rel="stylesheet" href="{% static 'site/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'site/css/style.css' %}?v={{ VERSION }}">
 {% endblock %}
 
 {% block content %}
@@ -319,7 +319,7 @@
 
 {% block custom_js %}
     <!-- Scroll js -->
-    <script src="{% static 'site/js/scrollIt.min.js' %}"></script>
+    <script src="{% static 'site/js/scrollIt.min.js' %}?v={{ VERSION }}"></script>
     <!-- main js file -->
-    <script src="{% static 'site/js/main.js' %}?v="></script>
+    <script src="{% static 'site/js/main.js' %}?v={{ VERSION }}"></script>
 {% endblock %}
