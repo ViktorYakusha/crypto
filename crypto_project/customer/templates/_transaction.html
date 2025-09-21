@@ -9,38 +9,45 @@
     </ul>
     <div class="d-none d-md-block tab-content" id="pills-tabContent">
       <div class="tab-pane fade show active" id="pills-open" role="tabpanel" aria-labelledby="pills-open-tab" tabindex="0">
-          <table class="table">
-              <thead>
-                <tr>
-                  <th>Актив</th>
-                  <th>Сумма</th>
-                  <th>Время открытия</th>
-                  <th>Время закрытия</th>
-                  <th>Осталось</th>
-                  <th>Профит</th>
-                </tr>
-              </thead>
-              {% if opened_bets|length  %}
-                <tbody>
-                {% for bet in opened_bets %}
-                <tr>
-                  <td>{{ bet.quotation }}</td>
-                  <td>{{ bet.summa }}</td>
-                  <td>{{ bet.open_date|date:"d.m.Y, H:i:s" }}</td>
-                  <td>{{ bet.close_date|date:"d.m.Y, H:i:s" }}</td>
-                  <td>---</td>
-                  <td>{{ bet.profit }}</td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            {% endif %}
-            </table>
-            {% if not opened_bets|length %}
-            <div class="empty">
+          <div class="open_preloader preloader-loading-wrapper">
+              <div class="cssload-loading"><i></i><i></i></div>
+            </div>
+{#          <table class="table">#}
+{#              <thead>#}
+{#                <tr>#}
+{#                  <th>Актив</th>#}
+{#                  <th>Сумма</th>#}
+{#                  <th>Время открытия</th>#}
+{#                  <th>Время закрытия</th>#}
+{#                  <th>Осталось</th>#}
+{#                  <th>Профит</th>#}
+{#                </tr>#}
+{#              </thead>#}
+{#              {% if opened_bets|length  %}#}
+{#                <tbody>#}
+{#                {% for bet in opened_bets %}#}
+{#                <tr>#}
+{#                  <td>{{ bet.quotation }}</td>#}
+{#                  <td>{{ bet.summa }}</td>#}
+{#                  <td>{{ bet.open_date|date:"d.m.Y, H:i:s" }}</td>#}
+{#                  <td>{{ bet.close_date|date:"d.m.Y, H:i:s" }}</td>#}
+{#                  <td>---</td>#}
+{#                  <td>{{ bet.profit }}</td>#}
+{#                </tr>#}
+{#                {% endfor %}#}
+{#                </tbody>#}
+{#            {% endif %}#}
+{#            </table>#}
+{#            {% if not opened_bets|length %}#}
+{#            <div class="empty">#}
+{#              <i class="icon icon-no-orders"></i>#}
+{#              <p>Нет открытых сделок</p>#}
+{#            </div>#}
+{#            {% endif %}#}
+          <div class="empty open_empty">
               <i class="icon icon-no-orders"></i>
               <p>Нет открытых сделок</p>
-            </div>
-            {% endif %}
+          </div>
       </div>
       <div class="tab-pane fade" id="pills-close" role="tabpanel" aria-labelledby="pills-close-tab" tabindex="0">
           <table class="table">

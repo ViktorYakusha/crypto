@@ -1,3 +1,5 @@
+import json
+from django.core import serializers
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
@@ -7,7 +9,8 @@ from celery import shared_task
 from authtools.forms import UserCreationForm
 from django.utils import timezone
 from datetime import timedelta
-import time
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
 
 from .forms import CustomerRegistrationForm, BetForm
 from .models import Bet
@@ -15,7 +18,7 @@ from .models import Bet
 
 @csrf_protect
 def customer_registration(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.headers.get('x-requested-with') == 'XMLHttpRequest':
         user_form = UserCreationForm(request.POST)
         customer_form = CustomerRegistrationForm(request.POST)
 
@@ -36,10 +39,13 @@ def customer_registration(request):
 def customer_create_bet(request):
     if request.method == 'POST' and request.user.customer:
         bet_form = BetForm(request.POST)
-        summa = float(request.POST['summa'])
+        try:
+            summa = float(request.POST['summa'])
+        except ValueError as e:
+            summa = 0
         duration = int(request.POST['duration'])
 
-        if bet_form.is_valid() and request.user.customer.balance >= summa and duration in [1, 5, 15, 30, 60, 240]:
+        if bet_form.is_valid() and request.user.customer.balance >= summa and  summa > 0 and duration in [1, 5, 15, 30, 60, 240]:
             bet = bet_form.save(commit=False)
             bet.customer = request.user.customer
             bet.close_date = timezone.now() + timedelta(minutes=duration)
@@ -52,6 +58,17 @@ def customer_create_bet(request):
             bet.save()
             # celery close task
             close_bet.apply_async((bet.id,), eta=bet.close_date)
+            # ws event
+            channel_layer = get_channel_layer()
+            group_name = f'user_{request.user.id}'
+            async_to_sync(channel_layer.group_send)(
+                group_name,
+                {
+                    'type': 'send_personal_message',
+                    'message': 'open_bet'
+                }
+            )
+
             # update customer balance
             request.user.customer.balance = round(request.user.customer.balance - summa, 2)
             request.user.customer.save()
@@ -62,7 +79,6 @@ def customer_create_bet(request):
             return JsonResponse({'status': 'error', 'message': 'Invalid request method.'}, status=400)
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'}, status=400)
-
 
 @csrf_protect
 def customer_login(request):
@@ -110,6 +126,16 @@ def customer_profile_bills(request):
 def customer_profile_settings(request):
     return render(request, 'settings.html')
 
+@login_required
+@csrf_protect
+def customer_load_open_bets(request):
+    if request.method == 'POST' and request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        customer = request.user.customer
+        opened_bets = Bet.objects.filter(customer=customer, entry=0).order_by('-open_date')
+        balance = request.user.customer.balance
+        json_opened_bets = serializers.serialize("json", opened_bets, fields=['quotation', 'summa', 'open_date', 'close_date', 'entry', 'profit'])
+        return JsonResponse({'status': 'success', 'bets': json_opened_bets, 'balance': balance}, safe=False)
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})
 
 @shared_task
 def close_bet(bet_id):
@@ -118,5 +144,13 @@ def close_bet(bet_id):
     bet.save()
     bet.customer.balance = round(bet.customer.balance + bet.entry, 2)
     bet.customer.save()
-    print(bet.customer.balance)
+    channel_layer = get_channel_layer()
+    group_name = f'user_{bet.customer.user.id}'
+    async_to_sync(channel_layer.group_send)(
+        group_name,
+        {
+            'type': 'send_personal_message',
+            'message': 'close_bet'
+        }
+    )
     print('Closing bet---------------- {}'.format(bet_id))

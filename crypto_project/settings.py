@@ -14,7 +14,7 @@ VERSION = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-SECRET_KEY = os.getenv("SECRET_KEY", "secret")
+SECRET_KEY = os.getenv('SECRET_KEY', 'secret')
 
 DEBUG = (os.getenv('DEBUG', 'False') == 'True')
 
@@ -24,6 +24,7 @@ INTERNAL_IPS = ['127.0.0.1']
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
 
 INSTALLED_APPS = [
+    'daphne',
     'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.staticfiles',
@@ -73,6 +74,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'crypto_project.wsgi.application'
+ASGI_APPLICATION = 'crypto_project.asgi.application'
+
+CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels_redis.core.RedisChannelLayer',
+            'CONFIG': {
+                "hosts": [('127.0.0.1', 6379)],
+            },
+        },
+    }
 
 
 DATABASES = {
@@ -87,11 +98,11 @@ DATABASES = {
 }
 
 CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": f"redis://127.0.0.1:6379/0",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': f'redis://127.0.0.1:6379/0',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         },
     }
 }
@@ -164,7 +175,7 @@ CELERY_TIMEZONE = 'Europe/Kyiv'
 
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
-# SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # SECURE_SSL_REDIRECT = True
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True

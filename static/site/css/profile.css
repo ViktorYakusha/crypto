@@ -213,6 +213,9 @@ body {
     padding: 24px;
     border: none;
 }
+.contacts {
+    min-height: 182px;
+}
 
 .contacts-icon {
     width: 75px;
@@ -275,7 +278,7 @@ tbody tr td {
 }
 
 .tab-content {
-    min-height: 171px;
+    min-height: 182px;
 }
 
 thead tr th,
@@ -304,10 +307,82 @@ tbody tr td {
     border-bottom: none !important;
     margin-bottom: 0 !important;
 }
+.open_preloader {
+    display: none;
+}
+
+.open_empty {
+    display: none;
+}
+
+.preloader-loading-wrapper {
+  display: flex;
+  margin: 0 auto;
+  min-height: 182px;
+  justify-content: center;
+  align-items: center;
+
+  .cssload-loading i {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background: var(--color-3);
+    border-radius: 50%;
+    &:nth-child(1) {
+      animation: cssload-loading-ani1 1.15s ease-in-out infinite;
+      -o-animation: cssload-loading-ani1 1.15s ease-in-out infinite;
+      -ms-animation: cssload-loading-ani1 1.15s ease-in-out infinite;
+      -webkit-animation: cssload-loading-ani1 1.15s ease-in-out infinite;
+      -moz-animation: cssload-loading-ani1 1.15s ease-in-out infinite;
+    }
+    &:nth-child(2) {
+      background: var(--color-4);
+      animation: cssload-loading-ani1 1.15s ease-in-out 0.58s infinite;
+      -o-animation: cssload-loading-ani1 1.15s ease-in-out 0.58s infinite;
+      -ms-animation: cssload-loading-ani1 1.15s ease-in-out 0.58s infinite;
+      -webkit-animation: cssload-loading-ani1 1.15s ease-in-out 0.58s infinite;
+      -moz-animation: cssload-loading-ani1 1.15s ease-in-out 0.58s infinite;
+    }
+  }
+}
+
+@keyframes cssload-loading-ani1 {
+  70% {
+    transform: scale(0.5);
+  }
+}
+
+
+@-o-keyframes cssload-loading-ani1 {
+  70% {
+    -o-transform: scale(0.5);
+  }
+}
+
+
+@-ms-keyframes cssload-loading-ani1 {
+  70% {
+    -ms-transform: scale(0.5);
+  }
+}
+
+
+@-webkit-keyframes cssload-loading-ani1 {
+  70% {
+    -webkit-transform: scale(0.5);
+  }
+}
+
+
+@-moz-keyframes cssload-loading-ani1 {
+  70% {
+    -moz-transform: scale(0.5);
+  }
+}
 
 .empty {
     text-align: center;
-    padding: 20px 0;
+    padding: 50px 0;
 }
 
 .empty .icon {
