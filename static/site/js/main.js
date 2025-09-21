@@ -42,6 +42,7 @@ $(document).ready(function () {
         topOffset: -50
     });
 
+    let menu = $('.burger-menu');
     const registrationModal = document.getElementById("registrationModal");
     const registrationForm = document.getElementById('registrationForm');
     const openRegistrationModal = document.querySelectorAll(".openRegistrationModal");
@@ -50,6 +51,9 @@ $(document).ready(function () {
     openRegistrationModal.forEach(element => {
       element.addEventListener('click', () => {
         registrationModal.style.display = "flex";
+
+        menu.removeClass('burger-menu_active');
+        $('body').css('overlow', 'visible');
       });
     });
 
@@ -66,6 +70,9 @@ $(document).ready(function () {
     openLoginModal.forEach(element => {
       element.addEventListener('click', () => {
         loginModal.style.display = "flex";
+
+        menu.removeClass('burger-menu_active');
+        $('body').css('overlow', 'visible');
       });
     });
 
