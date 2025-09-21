@@ -20,15 +20,15 @@
 
 
     <!-- ====== navbar start ====== -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar">
         <div class="container">
             <!-- Brand -->
-            <div class="col">
+            <div class="col-6 col-lg-2">
                 <a href="{% url 'homepage' %}" class="navbar-brand"></a>
             </div>
 
             <!-- Navbar links -->
-            <div class="collapse navbar-collapse nav col-md-6 justify-content-center mb-md-0" id="collapsibleNavbar">
+            <div class="d-none d-xxl-flex nav col-lg-7 justify-content-center mb-md-0" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" data-scroll-nav="1" href="#">О Нас</a>
@@ -45,16 +45,39 @@
                 </ul>
             </div>
 
-            <div class="col d-flex align-items-center justify-content-center text-end">
+            <div class="col-6 col-lg-3 d-none d-xxl-flex align-items-center justify-content-center text-end">
                 {% if not request.customer %}
                 <button type="button" class="btn btn-outline-light openLoginModal">Войти</button>
-                <button type="button" class="btn btn-success registration openRegistrationModal">Регистрация</button>
+                <button type="button" class="btn btn-success ms-3 registration openRegistrationModal">Регистрация</button>
                 {% else %}
                 <a type="button" href="{% url 'customer_profile' %}" class="btn btn-outline-light me-3">Профайл</a>
                 <a class="logout" href="{% url 'customer_logout' %}">
                     <i class="icon icon-logout"></i>
                 </a>
                 {% endif %}
+            </div>
+            <div class="col-2 d-block d-xxl-none">
+                <div class="burger-menu">
+                  <a href="" class="burger-menu_button">
+                    <span class="burger-menu_lines"></span>
+                  </a>
+                  <nav class="burger-menu_nav">
+                    <a href="#" data-scroll-nav="1" class="nav-link">О Нас</a>
+                    <a href="#" data-scroll-nav="2" class="nav-link">Миссия</a>
+                    <a href="#" data-scroll-nav="3" class="nav-link">Обратная Связь</a>
+                    <a href="#" data-scroll-nav="4" class="nav-link">Правила и Условия</a>
+                    {% if not request.customer %}
+                    <button type="button" class="btn btn-outline-light mb-3 openLoginModal">Войти</button>
+                    <button type="button" class="btn btn-success mb-3 registration openRegistrationModal">Регистрация</button>
+                    {% else %}
+                    <a type="button" href="{% url 'customer_profile' %}" class="btn btn-outline-light mb-3">Профайл</a>
+                    <a class="logout mb-4" href="{% url 'customer_logout' %}">
+                        <i class="icon icon-logout"></i>
+                    </a>
+                    {% endif %}
+                  </nav>
+                  <div class="burger-menu_overlay"></div>
+                </div>
             </div>
         </div>
     </nav>

@@ -175,6 +175,16 @@ body {
   -o-transition: 0.8s;
   transition: 0.8s;
 }
+
+.burger-menu_nav .nav-link {
+    color: var(--main-color);
+}
+
+.burger-menu_nav .nav-link.active, .burger-menu_nav .nav-link:hover, .burger-menu_nav .nav-link:focus {
+    color: var(--color-3);
+}
+
+
 .burger-menu_active .burger-menu_nav {
   top: 0;
   -webkit-transition: 0.4s;

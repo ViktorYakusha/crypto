@@ -9,13 +9,13 @@ class CustomerMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if request.path.startswith('/profile'):
-            try:
-                customer = request.user.customer
-            except Customer.DoesNotExist:
+        try:
+            customer = request.user.customer
+            request.customer = customer
+        except (Customer.DoesNotExist, AttributeError):
+            if request.path.startswith('/profile'):
                 logout(request)
                 return HttpResponseRedirect(reverse('homepage'))
 
-            request.customer = customer
         response = self.get_response(request)
         return response
