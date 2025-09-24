@@ -598,8 +598,8 @@ img {
 
 @media (max-width: 575px) {
     .modal-content {
-        width: 96%;
-        margin: 0 auto;
+        width: 93% !important;
+        margin: 0 auto !important;
     }
 
     .home-text h1{
