@@ -122,7 +122,7 @@ img {
   top: 0;
   right: 0;
   z-index: 30;
-  width: 80px;
+  width: 50px;
   height: 80px;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
@@ -137,8 +137,8 @@ img {
 .burger-menu_lines::after,
 .burger-menu_lines {
   position: absolute;
-  width: 40px;
-  height: 3px;
+  width: 20px;
+  height: 1.5px;
   background-color: var(--bg-white);
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
@@ -152,11 +152,11 @@ img {
 }
 .burger-menu_lines::before {
   content: '';
-  top: -11px;
+  top: -6px;
 }
 .burger-menu_lines::after {
   content: '';
-  top: 11px;
+  top: 6px;
 }
 
 
@@ -482,9 +482,17 @@ img {
     .about-info {
         height: auto;
     }
-
     .mission {
         height: auto;
+    }
+    .about-info-item:nth-child(1) {
+        padding: 48px 24px;
+    }
+    .about-info-item:nth-child(2) {
+        padding: 24px 24px;
+    }
+    .about-info-item:nth-child(3) {
+        padding: 24px 48px;
     }
 }
 
@@ -523,7 +531,7 @@ img {
     }
 
     .home {
-        padding: 200px 0 80px 0;
+        padding: 200px 0 120px 0;
         min-height: 0;
     }
 
@@ -589,18 +597,87 @@ img {
 }
 
 @media (max-width: 575px) {
+    .modal-content {
+        width: 96%;
+        margin: 0 auto;
+    }
+
     .home-text h1{
         font-size: 30px;
+        line-height: 40px;
     }
 
     .home-text p {
-        font-size: 16px;
+        font-size: 20px;
+        line-height: 32px;
     }
 
     .section-title h2 {
         font-size: 30px;
     }
 
+    .about {
+        padding: 58px 0;
+    }
+
+    .about-title h2 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .about-title {
+        margin-bottom: 40px;
+    }
+
+    .about-title span {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .about-info h2 {
+        font-size: 40px;
+        line-height: 48px;
+    }
+
+    .about-info span {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .mission-our h2 {
+        font-size: 24px;
+        line-height: 32px;
+        padding-bottom: 8px;
+    }
+
+    .mission-our p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .mission-item {
+        padding: 40px 0;
+    }
+
+    .mission-item h3 {
+        font-size: 20px;
+        padding-top: 24px;
+    }
+
+    .mission-item p {
+        font-size: 16px;
+        line-height: 24px;
+        padding: 0 20px;
+    }
+
+    .contact-section {
+        padding: 56px 0;
+    }
+
+    .contact-section h2 {
+        font-size: 24px;
+        line-height: 32px;
+    }
 }
 
 .mmodal {
