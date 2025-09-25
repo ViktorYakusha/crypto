@@ -215,7 +215,11 @@ function clearOpenBets() {
     $('.open_preloader').css("display", "none");
     $('.open_preloader_mob').css("display", "none");
 
-    $('#render_open').html('');
+    var $table = $('<table class="table">');
+    var $thead = $('<thead>');
+    $thead.append('<tr><th>Актив</th><th>Сумма</th><th>Время открытия</th><th>Время закрытия</th><th>Осталось</th><th>Профит</th></tr>')
+    $table.append($thead);
+    $('#render_open').html('').append($table);
     $('#render_open_mob').html('');
 
     $('.open_empty').css("display", "block");
@@ -226,7 +230,11 @@ function clearCloseBets() {
     $('.close_preloader').css("display", "none");
     $('.close_preloader_mob').css("display", "none");
 
-    $('#render_close').html('');
+    var $table = $('<table class="table">');
+    var $thead = $('<thead>');
+    $thead.append('<tr><th>Актив</th><th>Сумма</th><th>Время открытия</th><th>Время закрытия</th><th>Профит</th><th>Зачислено</th></tr>')
+    $table.append($thead);
+    $('#render_close').html('').append($table);
     $('#render_close_mob').html('');
 
     $('.close_empty').css("display", "block");
