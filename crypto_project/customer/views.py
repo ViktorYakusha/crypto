@@ -131,10 +131,20 @@ def customer_profile_settings(request):
 def customer_load_open_bets(request):
     if request.method == 'POST' and request.headers.get('x-requested-with') == 'XMLHttpRequest':
         customer = request.user.customer
-        opened_bets = Bet.objects.filter(customer=customer, entry=0).order_by('-open_date')
+        opened_bets = Bet.objects.filter(customer=customer, entry=0).order_by('close_date')
         balance = request.user.customer.balance
         json_opened_bets = serializers.serialize("json", opened_bets, fields=['quotation', 'summa', 'open_date', 'close_date', 'entry', 'profit'])
         return JsonResponse({'status': 'success', 'bets': json_opened_bets, 'balance': balance}, safe=False)
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})
+
+@login_required
+@csrf_protect
+def customer_load_close_bets(request):
+    if request.method == 'POST' and request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        customer = request.user.customer
+        opened_bets = Bet.objects.filter(customer=customer, entry__isnull=False).order_by('-close_date')
+        json_opened_bets = serializers.serialize("json", opened_bets, fields=['quotation', 'summa', 'open_date', 'close_date', 'entry', 'profit'])
+        return JsonResponse({'status': 'success', 'bets': json_opened_bets}, safe=False)
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})
 
 @shared_task

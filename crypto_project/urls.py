@@ -17,6 +17,7 @@ urlpatterns = [
     path('profile/bills', customer_views.customer_profile_bills, name='customer_profile_bills'),
     path('profile/settings', customer_views.customer_profile_settings, name='customer_profile_settings'),
     path('profile/load-open-bets', customer_views.customer_load_open_bets, name='customer_load_open_bets'),
+    path('profile/load-close-bets', customer_views.customer_load_close_bets, name='customer_load_close_bets'),
     path('registration', customer_views.customer_registration, name='customer_registration'),
     path('create-bet', customer_views.customer_create_bet, name='customer_create_bet'),
 
