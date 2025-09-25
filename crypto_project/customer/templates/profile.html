@@ -38,7 +38,6 @@
         $(document).ready(function () {
             let timeoutID = null;
             const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-            const balance = parseFloat(document.querySelector('[name=balance]').value, 10).toFixed(2);
             const billForm = document.getElementById('bill');
             const buyBill = document.getElementById('buyBill');
             const sellBill = document.getElementById('sellBill');
@@ -47,6 +46,7 @@
             const durationInput = document.getElementById('duration');
 
             function validate(){
+                const balance = parseFloat(document.querySelector('[name=balance]').value, 10).toFixed(2);
                 if (!!quotationInput.value && !!durationInput.value && Number(summaInput.value) > 0 && Number(balance) >= Number(summaInput.value)) {
                     buyBill.disabled = false;
                     sellBill.disabled = false;

@@ -252,6 +252,7 @@ function loadOpenBets() {
             }
             const balance = JSON.parse(response.balance);
             if(balance) {
+                $('[name=balance]').val(balance);
                 $('.balance').each(function() {
                     $(this).text(balance);
                 });
