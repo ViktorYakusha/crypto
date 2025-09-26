@@ -486,13 +486,13 @@ img {
         height: auto;
     }
     .about-info-item:nth-child(1) {
-        padding: 48px 24px;
+        padding: 48px 24px 24px 24px;
     }
     .about-info-item:nth-child(2) {
-        padding: 24px 24px;
+        padding: 24px;
     }
     .about-info-item:nth-child(3) {
-        padding: 24px 48px;
+        padding: 24px 24px 48px 24px;
     }
 }
 
