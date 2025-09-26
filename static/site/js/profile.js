@@ -297,7 +297,7 @@ function loadCloseBets() {
 }
 
 // Create WebSocket connection.
-const socket = new WebSocket("ws://127.0.0.1:8000/customer/");
+const socket = new WebSocket('ws://' + window.location.host + '/customer/');
 
 // Connection opened
 socket.addEventListener("open", (event) => {
