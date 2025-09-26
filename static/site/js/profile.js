@@ -259,12 +259,10 @@ function loadOpenBets() {
                 clearOpenBets();
             }
             const balance = JSON.parse(response.balance);
-            if(balance) {
-                $('[name=balance]').val(balance);
-                $('.balance').each(function() {
-                    $(this).text(balance);
-                });
-            }
+            $('[name=balance]').val(balance);
+            $('.balance').each(function() {
+                $(this).text(balance);
+            });
         },
         error: function(xhr, status, error) {
             console.error("AJAX Error:", error);
