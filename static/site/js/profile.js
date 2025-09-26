@@ -297,7 +297,13 @@ function loadCloseBets() {
 }
 
 // Create WebSocket connection.
-const socket = new WebSocket('ws://' + window.location.host + '/customer/');
+var loc = window.location;
+var wsStart = 'ws://';
+
+if (loc.protocol === 'https:') {
+    wsStart = 'wss://';
+}
+const socket = new WebSocket(wsStart + loc.host + '/customer/');
 
 // Connection opened
 socket.addEventListener("open", (event) => {
