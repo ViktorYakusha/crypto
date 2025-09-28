@@ -80,26 +80,16 @@ $(document).ready(function () {
     closeReplenishmentModal.forEach(element => {
         element.addEventListener('click', () => {
             replenishmentModal.style.display = "none";
-            $('#selectedBlock').css('display', 'block');
-            $('#cryptoBlockNumber').html('');
-            $('#cryptoCopy').css('display', 'none');
-            $('#cryptoBlock').css('display', 'none');
-            $('#bankCardsBlock').css('display', 'none');
             replenishmentForm.reset();
-            $("#typeSend").attr('disabled','disabled');
+            replenishmentModalClose();
         });
     });
 
     window.onclick = function(event) {
       if (event.target === replenishmentModal) {
         replenishmentModal.style.display = "none";
-        $('#selectedBlock').css('display', 'block');
-        $('#cryptoBlockNumber').html('');
-        $('#cryptoCopy').css('display', 'none');
-        $('#cryptoBlock').css('display', 'none');
-        $('#bankCardsBlock').css('display', 'none');
         replenishmentForm.reset();
-        $("#typeSend").attr('disabled','disabled');
+        replenishmentModalClose();
       }
     }
 
@@ -115,6 +105,15 @@ $(document).ready(function () {
         alert("Номер кошелька скопирован");
     });
 });
+
+function replenishmentModalClose() {
+    $('#selectedBlock').css('display', 'block');
+    $('#cryptoBlockNumber').html('');
+    $('#cryptoCopy').css('display', 'none');
+    $('#cryptoBlock').css('display', 'none');
+    $('#bankCardsBlock').css('display', 'none');
+    $("#typeSend").attr('disabled','disabled');
+}
 
 function burgerMenu(selector) {
   let menu = $(selector);
