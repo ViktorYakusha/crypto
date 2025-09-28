@@ -8,6 +8,79 @@ $(document).ready(function () {
     burgerMenu('.burger-menu');
     loadOpenBets();
     loadCloseBets();
+
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    const replenishmentModal = document.getElementById("replenishmentModal");
+    const replenishmentForm = document.getElementById('replenishmentForm');
+    const openReplenishmentModal = document.querySelectorAll(".openReplenishmentModal");
+    const closeReplenishmentModal = document.querySelectorAll(".closeReplenishmentModal");
+    const typeSelect = document.getElementById('type');
+    const typeSend = document.getElementById('typeSend');
+
+    const _objects = {
+        'bank_cards': [
+            {'name': 'Card name', 'bank_name': 'Bank name', 'card_number': '4444 4444 4444 4444'}
+        ],
+        'crypto': [
+
+        ]
+    }
+
+    typeSelect.addEventListener('change', function() {
+        if(typeSelect.value !== '') {
+            $("#typeSend").removeAttr('disabled');
+        } else {
+            $("#typeSend").attr('disabled','disabled');
+        }
+    });
+
+    typeSend.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        if(typeSelect.value === 'bank_cards') {
+            $('#selectedBlock').css('display', 'none');
+            $('#bankCardsBlockName').text(_objects[typeSelect.value][0].name);
+            $('#bankCardsBlockBankName').text(_objects[typeSelect.value][0].bank_name);
+            $('#bankCardsBlockCardNumber').html(_objects[typeSelect.value][0].card_number + '<i class="icon icon-copy copy" data-text="' + _objects[typeSelect.value][0].card_number  + '"></i>');
+            $('#bankCardsBlock').css('display', 'block');
+        }
+
+        // crypto
+    });
+
+    openReplenishmentModal.forEach(element => {
+      element.addEventListener('click', () => {
+        replenishmentModal.style.display = "flex";
+        $('body').css('overlow', 'visible');
+      });
+    });
+
+    closeReplenishmentModal.forEach(element => {
+        element.addEventListener('click', () => {
+            replenishmentModal.style.display = "none";
+            $('#selectedBlock').css('display', 'block');
+            $('#bankCardsBlock').css('display', 'none');
+            replenishmentForm.reset();
+            $("#typeSend").attr('disabled','disabled');
+        });
+    });
+
+    window.onclick = function(event) {
+      if (event.target === replenishmentModal) {
+        replenishmentModal.style.display = "none";
+        $('#selectedBlock').css('display', 'block');
+        $('#bankCardsBlock').css('display', 'none');
+        replenishmentForm.reset();
+        $("#typeSend").attr('disabled','disabled');
+      }
+    }
+
+    $('.replenishment-wrapp').on('click', '.copy', function(event) {
+        const text = event.target.dataset.text;
+        copyToClipboard(text);
+        alert("Номер карты скопирован");
+    });
 });
 
 function burgerMenu(selector) {
@@ -331,3 +404,27 @@ socket.addEventListener("error", (event) => {
 socket.addEventListener("close", (event) => {
   console.log("WebSocket connection closed:", event);
 });
+
+function copyToClipboard(textToCopy) {
+    // Create a temporary input element
+    var $temp = $("<input>");
+    $("body").append($temp);
+
+    // Set its value to the text to copy and select it
+    $temp.val(textToCopy).select();
+
+    try {
+        // Execute the copy command
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Copy command was ' + msg);
+    } catch (err) {
+        console.error('Oops, unable to copy', err);
+        // Fallback for browsers that don't support execCommand('copy') or for mobile devices
+        // You might prompt the user to manually copy the text
+        window.prompt("To copy the text to clipboard: Ctrl+C, Enter", textToCopy);
+    } finally {
+        // Remove the temporary element
+        $temp.remove();
+    }
+}

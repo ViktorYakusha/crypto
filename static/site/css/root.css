@@ -8,6 +8,7 @@
     --color-6: #E9F4EE;
     --color-7: #FF4236;
     --color-8: #D0271C;
+    --color-9: #B8B5BA;
     --color-border: #EAEAEB;
     --bg-white: #ffffff;
     --bg-dark: #2b2c2f;
@@ -20,6 +21,16 @@
     --black-100: #f7f7f7;
     --black-alpha-100: rgba(172, 169, 169, 0.281);
     --block-radius: 24px;
+}
+
+.row {
+    --bs-gutter-x: 24px;
+}
+
+@media (max-width: 767px) {
+    .row {
+        --bs-gutter-x: 16px;
+    }
 }
 
 .btn {
@@ -49,6 +60,17 @@
 .btn-outline-primary {
     color: var(--color-3);
     border-color: var(--color-3);
+}
+
+.btn-outline-secondary {
+    border-color: var(--color-9);
+    color: var(--main-color);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--color-9);
+    border-color: var(--color-9);
+    color: var(--main-color);
 }
 
 p {

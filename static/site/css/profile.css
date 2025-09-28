@@ -4,54 +4,6 @@
 /* === Global Css === */
 @import url('./root.css');
 
-/* ================= media ================*/
-@media (min-width: 1920px) {
-    .container, .container-lg, .container-md, .container-sm, .container-xl {
-        max-width: 1808px;
-    }
-}
-
-@media (max-width: 1200px) {
-    body {
-        padding-top: 80px;
-    }
-    header {
-        height: 80px;
-        left: 0;
-        top: 0;
-        position: fixed;
-        z-index: 1;
-        width: 100%;
-        background-color: var(--bg-white);
-        padding-left: var(--bs-gutter-x);
-        border-bottom: 1px solid var(--color-border);
-    }
-}
-
-@media (min-width: 768px) {
-    .nav li {
-        margin-left: 32px;
-    }
-
-    .nav li:first-child {
-        margin-left: 0;
-    }
-
-    .nav-pills li {
-        margin-left: 16px;
-    }
-
-    .nav-pills li:first-child {
-        margin-left: 24px;
-    }
-}
-
-@media (max-width: 767px) {
-    .nav-pills button {
-        width: 100%;
-    }
-}
-
 .container {
     max-width: 95%;
     width: 95%;
@@ -221,6 +173,7 @@ body {
     padding: 24px;
     border: none;
 }
+
 .contacts {
     min-height: 182px;
 }
@@ -482,4 +435,107 @@ tbody tr td {
     font-size: 20px;
     line-height: 24px;
     margin-bottom: 6px;
+}
+
+#bankCardsBlock {
+    display: none;
+}
+
+.replenishment-table {
+    padding: 0;
+    margin: 0;
+}
+
+.replenishment-table tr td:first-child {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: var(--color-1) !important;
+}
+.replenishment-table td {
+    font-weight: 500;
+    padding: 4px 0;
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.copy {
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--color-1);
+    margin-inline-start: 14px;
+}
+
+.copy:before {
+    margin: 0;
+}
+
+/* ================= media ================*/
+@media (min-width: 1920px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1808px;
+    }
+}
+
+@media (max-width: 1200px) {
+    body {
+        padding-top: 80px;
+    }
+    header {
+        height: 80px;
+        left: 0;
+        top: 0;
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+        background-color: var(--bg-white);
+        padding-left: var(--bs-gutter-x);
+        border-bottom: 1px solid var(--color-border);
+    }
+}
+
+@media (min-width: 768px) {
+    .nav li {
+        margin-left: 32px;
+    }
+
+    .nav li:first-child {
+        margin-left: 0;
+    }
+
+    .nav-pills li {
+        margin-left: 16px;
+    }
+
+    .nav-pills li:first-child {
+        margin-left: 24px;
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        max-width: inherit;
+        width: inherit;
+        --bs-gutter-x: 32px;
+    }
+    .nav-pills button {
+        width: 100%;
+    }
+    .card {
+        padding: 16px;
+    }
+
+    .replenishment-table tr td:first-child {
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .replenishment-table td {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .copy {
+        font-size: 20px;
+        margin-inline-start: 12px;
+    }
 }
