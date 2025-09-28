@@ -109,7 +109,7 @@ label {
 
 .form-select:focus,
 .form-control:focus {
-    border-color: var(--color-3);
+    border: 1px solid var(--color-3);
     color: var(--main-color);
     box-shadow: none;
 }

@@ -344,7 +344,6 @@ img {
     background-color: var(--color-2);
     border-radius: 32px;
     padding: 0 32px;
-    display: flex;
     align-items: center;
     justify-content: center;
 }

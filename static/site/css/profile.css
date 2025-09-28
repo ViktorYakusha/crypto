@@ -19,11 +19,6 @@ body {
     color: var(--main-color);
 }
 
-.container-header {
-    background-color: var(--bg-white);
-    border-bottom: 1px solid var(--color-border);
-}
-
 .nav-link {
     padding: 27px 16px;
     font-weight: 500;
@@ -169,6 +164,7 @@ body {
 
 .card {
     background-color: var(--bg-white);
+    overflow: hidden;
     border-radius: 16px;
     padding: 24px;
     border: none;
@@ -272,7 +268,7 @@ tbody tr td {
 }
 
 .mob-bet {
-    border-bottom: 2px solid var(--color-border) !important;
+    border-bottom: 1px solid var(--color-border) !important;
     margin-bottom: 16px !important;
 }
 
@@ -507,6 +503,18 @@ tbody tr td {
         background-color: var(--bg-white);
         padding-left: var(--bs-gutter-x);
         border-bottom: 1px solid var(--color-border);
+    }
+}
+
+@media (min-width: 1201px) {
+    .container-header {
+        background-color: var(--bg-white);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    #sellBill,
+    #buyBill {
+        margin-top: 27px;
     }
 }
 
