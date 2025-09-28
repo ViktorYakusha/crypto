@@ -65,6 +65,7 @@ $(document).ready(function () {
                 const key = event.target.value;
                 const foundElement = _objects[typeSelect.value].find(element => element.value === key);
                 $('#cryptoBlockNumber').text(foundElement.number);
+                $('#cryptoCopy').attr("data-text", foundElement.number);
                 $('#cryptoCopy').css('display', 'block');
             });
         }
