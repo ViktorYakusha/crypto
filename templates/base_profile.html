@@ -75,9 +75,9 @@
         <div id="selectedBlock">
             <p class="title">Пополнить Счет</p>
             <div class="mb-3">
-                <label for="duration" class="form-label">Метод</label>
+                <label for="type" class="form-label">Метод</label>
                 <select class="form-select" name="type" id="type" aria-label="Метод">
-                  <option value="" selected>Выберете метод пополнения</option>
+                  <option value="" disabled selected>Выберете метод пополнения</option>
                   <option value="bank_cards">Банковская карта</option>
                   <option value="crypto">Криптовалютный кошелек</option>
                 </select>
@@ -111,6 +111,35 @@
                       </tbody>
                     </table>
                 </div>
+            <div class="row">
+                <div class="col mt-3">
+                    <button type="button" class="btn btn-success closeReplenishmentModal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+        <div id="cryptoBlock">
+            <p class="title">Криптовалютный Кошелек</p>
+            <div class="replenishment-wrapp">
+                <label for="crypto" class="form-label">Криптовалюта</label>
+                <input class="form-control" id="crypto" name="crypto" disabled value="USDT"/>
+                <div class="mt-3">
+                    <label for="cryptoBlockName" class="form-label">Сеть</label>
+                    <select class="form-select" name="cryptoBlockName" id="cryptoBlockName" aria-label="Котировка">
+                      <option value="" selected disabled>Выберите сеть</option>
+                    </select>
+                </div>
+                <div class="mt-3 d-flex flex-row">
+                    <table class="replenishment-table table align-middle">
+                      <tbody>
+                        <tr>
+                          <td class="text-start no-border" style="width:50px">Адрес:</td>
+                          <td class="text-end no-border" id="cryptoBlockNumber"></td>
+                          <td class="text-end no-border" id="cryptoBlockCopy" style="width:30px"><i class="icon icon-copy" id="cryptoCopy"></i></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
             <div class="row">
                 <div class="col mt-3">
                     <button type="button" class="btn btn-success closeReplenishmentModal">Закрыть</button>

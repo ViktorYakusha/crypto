@@ -91,6 +91,7 @@ a:hover {
 label {
     font-size: 12px;
     line-height: 16px;
+    color: var(--main-color);
 }
 
 .form-label {

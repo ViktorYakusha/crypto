@@ -437,8 +437,18 @@ tbody tr td {
     margin-bottom: 6px;
 }
 
-#bankCardsBlock {
+#bankCardsBlock,
+#cryptoBlock {
     display: none;
+}
+
+.replenishment-table td {
+    font-weight: 500;
+    padding: 4px 0;
+    font-size: 20px;
+    line-height: 32px;
+    overflow-wrap: anywhere;
+    vertical-align: top;
 }
 
 .replenishment-table {
@@ -459,6 +469,11 @@ tbody tr td {
     line-height: 32px;
 }
 
+#cryptoCopy {
+    display: none;
+}
+
+.cryptoCopy,
 .copy {
     cursor: pointer;
     font-size: 24px;
@@ -466,6 +481,7 @@ tbody tr td {
     margin-inline-start: 14px;
 }
 
+.cryptoCopy,
 .copy:before {
     margin: 0;
 }
@@ -534,6 +550,7 @@ tbody tr td {
         line-height: 24px;
     }
 
+    .cryptoCopy,
     .copy {
         font-size: 20px;
         margin-inline-start: 12px;
