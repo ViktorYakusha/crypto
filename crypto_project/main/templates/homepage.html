@@ -188,12 +188,20 @@
                     <div class="contact-form">
                         <form>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <label for="contact-section-name" class="form-label">Имя</label>
+                                <input type="text" class="form-control" name="contact-section-name" placeholder="Введите свое имя" id="contact-section-name">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                                <textarea cols="50" class="form-control" id="exampleFormControlTextarea1"></textarea>
+                                <label for="contact-section-email" class="form-label">Email</label>
+                                <input type="email" class="form-control" name="contact-section-email"  id="contact-section-email" placeholder="Введите свой email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="contact-section-phone" class="form-label">Телефон</label>
+                                <input type="text" class="form-control" name="contact-section-phone" id="contact-section-phone" placeholder="Введите свой телефон">
+                            </div>
+                            <div class="mb-3">
+                                <label for="messages" class="form-label">Сообщение</label>
+                                <textarea rows="5" class="form-control" name="messages" id="messages"></textarea>
                             </div>
                             <div class="d-grid">
                                 <button type="button" class="btn btn-success">Отправить</button>
