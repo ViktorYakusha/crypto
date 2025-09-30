@@ -96,7 +96,11 @@
                     <div class="home-text">
                         <h1>Ваш партнёр в мире инвестиций.</h1>
                         <p>Ежедневные идеи, аналитика и сопровождение — в одном месте.</p>
+                        {% if not request.customer %}
                         <button type="button" class="btn btn-success registration openRegistrationModal">Регистрация</button>
+                        {% else %}
+                        <a type="button" href="{% url 'customer_profile' %}" class="btn btn-success">Платформа</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -147,7 +151,11 @@
                     <div class="mission-our py-5 d-flex flex-column align-items-start">
                         <h2>Наша Миссия - <span>ВАШ РЕЗУЛЬТАТ</span></h2>
                         <p>Сделать торговлю честной, умной и доступной.</p>
-                        <button type="button" class="btn btn-success">Открыть Счет</button>
+                        {% if not request.customer %}
+                        <button type="button" class="btn btn-success openRegistrationModal">Открыть Счет</button>
+                        {% else %}
+                        <a type="button" href="{% url 'customer_profile' %}" class="btn btn-success">Платформа</a>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-12 col-xxl-7 pt-5 pt-xxl-0">
@@ -323,6 +331,10 @@
                 <label for="loginFormPassword" class="form-label">Пароль</label>
                 <input type="password" name="password" id="loginFormPassword" class="form-control" placeholder="Введите свой пароль">
             </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Запомнить меня</label>
+              </div>
             <div class="d-grid">
                 <button type="submit" class="btn btn-success" id="loginSend">Войти</button>
             </div>
