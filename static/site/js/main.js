@@ -63,6 +63,7 @@ $(document).ready(function () {
     }
 
     const loginModal = document.getElementById("loginModal");
+    const forgotPasswordForm = document.getElementById("forgotPasswordForm");
     const loginForm = document.getElementById('loginForm');
     const openLoginModal = document.querySelectorAll(".openLoginModal");
     const loginCloseButton = document.querySelector(".loginClose");
@@ -78,12 +79,16 @@ $(document).ready(function () {
 
     loginCloseButton.onclick = function() {
       loginModal.style.display = "none";
+      loginForm.style.display = "block";
+      forgotPasswordForm.style.display = "none";
       loginForm.reset();
     }
 
     window.onclick = function(event) {
       if (event.target == loginModal) {
         loginModal.style.display = "none";
+        loginForm.style.display = "block";
+        forgotPasswordForm.style.display = "none";
         loginForm.reset();
       }
       if (event.target == registrationModal) {
@@ -136,4 +141,10 @@ $(document).ready(function () {
             }
         });
     });
+
+    $("#showForgotPasswordForm").click(function(event) {
+        $('#loginForm').css('display', 'none');
+        $('#forgotPasswordForm').css('display', 'block');
+        return false;
+      });
 });

@@ -85,10 +85,13 @@ def customer_login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
+        long = request.POST.get('long')
 
         if email and password:
             user = authenticate(email=email, password=password)
             if user is not None:
+                if long:
+                    request.session.set_expiry(60 * 60 * 24)
                 login(request, user)
                 response_data = {'status': 'success'}
                 return JsonResponse(response_data, status=200)

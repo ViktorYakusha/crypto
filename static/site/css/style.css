@@ -534,6 +534,10 @@ img {
   cursor: pointer;
 }
 
+#forgotPasswordForm {
+    display: none;
+}
+
 /* ================= media ================*/
 @media (min-width: 1441px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl {

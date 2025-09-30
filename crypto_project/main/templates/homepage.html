@@ -321,8 +321,8 @@
         <div class="modal-header">
           <i class="icon icon-close close loginClose"></i>
         </div>
-        <p class="title">Войти</p>
         <form id="loginForm">
+            <p class="title">Войти</p>
             <div class="mb-3">
                 <label for="loginFormEmail" class="form-label">Email</label>
                 <input type="email" name="email" class="form-control" id="loginFormEmail" placeholder="Введите свой email">
@@ -333,13 +333,23 @@
             </div>
             <div class="d-flex w-100  justify-content-between">
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Запомнить меня</label>
+                    <input type="checkbox" class="form-check-input" name="long" id="loginFormCheck">
+                    <label class="form-check-label" for="loginFormCheck">Запомнить меня</label>
                 </div>
-                <a href="#" class="big">Забыли пароль?</a>
+                <a href="#" class="big" id="showForgotPasswordForm">Забыли пароль?</a>
             </div>
             <div class="d-grid">
                 <button type="submit" class="btn btn-success" id="loginSend">Войти</button>
+            </div>
+        </form>
+        <form id="forgotPasswordForm">
+            <p class="title">Восстановить Пароль</p>
+            <div class="mb-3">
+                <label for="forgotPasswordFormEmail" class="form-label">Email</label>
+                <input type="email" name="forgotPasswordFormEmail" class="form-control" id="forgotPasswordFormEmail" placeholder="Введите свой email">
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-success" id="forgotPasswordFormSend">Отправить</button>
             </div>
         </form>
       </div>
