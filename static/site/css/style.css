@@ -341,11 +341,12 @@ img {
 }
 
 .mission-our {
-    background-color: red;
+    background-color: var(--color-2);
     border-radius: 32px;
     padding: 0 32px;
     align-items: center;
     justify-content: center;
+    height: 100%;
 }
 
 .mission-our h2{
@@ -669,6 +670,24 @@ img {
         font-size: 20px;
         line-height: 24px;
     }
+
+    .mission-item-wrapp {
+        flex: 100%;
+    }
+
+    .mission-item-wrapp:nth-child(1) .mission-item {
+        border-bottom: 1px solid var(--color-border);
+    }
+    .mission-item-wrapp:nth-child(2) .mission-item {
+        border-bottom: 1px solid var(--color-border);
+        border-left: none;
+    }
+    .mission-item-wrapp:nth-child(3) .mission-item {
+        border-bottom: 1px solid var(--color-border);
+    }
+    .mission-item-wrapp:nth-child(4) .mission-item {
+        border-left: none;
+    }
 }
 
 @media (max-width: 575px) {
@@ -676,6 +695,10 @@ img {
         width: 93% !important;
         margin: 0 auto !important;
         padding: 16px 16px 24px 16px !important;
+    }
+
+    .home {
+        background-image: url("../img/bg_1_2.jpg");
     }
 
     .home-text h1{
