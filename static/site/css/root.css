@@ -98,6 +98,13 @@ a.big:hover {
     text-decoration: underline;
 }
 
+h2 {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
 label {
     font-size: 12px;
     line-height: 16px;

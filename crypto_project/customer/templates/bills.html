@@ -1,14 +1,24 @@
 {% extends 'base_profile.html' %}
 
-{% load static %}
+{% block local_css %}
+    <style>
+        .container-full-h {
+            height: calc(100vh - 120px);
+        }
+
+        .container-full-h .card-full-h {
+            height: calc(100vh - 120px);
+        }
+    </style>
+{% endblock %}
 
 {% block profile_content %}
-    <div class="container">
+    <div class="container container-full-h">
       <div class="row">
         <div class="col-12 col-xl-3 d-none d-xl-block">
             {% include "_profile.html" %}
         </div>
-        <div class="col-12 col-xl-6 mb-4">
+        <div class="col-12 col-xl-6 container-full-h">
             {% include "_bills.html" %}
         </div>
         <div class="col-12 col-xl-3">
