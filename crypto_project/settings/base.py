@@ -7,7 +7,7 @@ from pathlib import Path
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 VERSION = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
 
 
@@ -16,29 +16,9 @@ VERSION = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'secret')
 
-DEBUG = (os.getenv('DEBUG', 'False') == 'True')
-
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
-INTERNAL_IPS = ['127.0.0.1']
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
-
-INSTALLED_APPS = [
-    'daphne',
-    'debug_toolbar',
-    'django.contrib.admin',
-    'django.contrib.staticfiles',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'authtools',
-    'django_celery_results',
-    'django_celery_beat',
-    'phonenumber_field',
-    'crypto_project.customer',
-    'crypto_project.main',
-]
 
 AUTH_USER_MODEL = 'authtools.User'
 
@@ -139,9 +119,6 @@ TIME_ZONE = 'Europe/Kyiv'
 
 STATIC_URL = '/static/'
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static_files/')
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static/'),
@@ -174,10 +151,3 @@ CELERY_RESULT_BACKEND = 'django-db'
 CELERY_TIMEZONE = 'Europe/Kyiv'
 
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
-
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# SECURE_SSL_REDIRECT = True
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-
-SESSION_COOKIE_AGE = 60 * 60
