@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="row mb-3">
+        <div class="col">
+            <h2>Мои Счета</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="bills_balance d-flex flex-column justify-content-center ">
+                <span class="title">Баланс</span>
+                <p>{{ request.customer.balance }}$</p>
+                <span>Тип счета: Standart</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-3 my-3 my-md-0">
+            <div class="bills_replenishment d-flex flex-column justify-content-center align-items-center openReplenishmentModal">
+                <i class="icon icon-deposit"></i>
+                Пополнить
+                </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="bills_withdraw d-flex flex-column justify-content-center align-items-center">
+                <i class="icon icon-withdraw"></i>
+                Вывод
+            </div>
+        </div>
+    </div>
+</div>

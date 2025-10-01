@@ -403,6 +403,7 @@ tbody tr td {
     color: var(--color-1) !important;
 }
 
+.profile-table .currency,
 .profile-table .balance {
     font-weight: 600;
     font-size: 16px;
@@ -480,6 +481,60 @@ tbody tr td {
 .cryptoCopy,
 .copy:before {
     margin: 0;
+}
+
+.bills_balance {
+    background-color: var(--color-5);
+    color: var(--color-1);
+    padding: 24px 32px;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.bills_balance .title {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.bills_balance p {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+    color: var(--main-color);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.bills_replenishment {
+    background-color: var(--color-6);
+    color: var(--color-3);
+}
+
+.bills_withdraw {
+    background-color: var(--color-5);
+}
+
+.bills_balance,
+.bills_replenishment,
+.bills_withdraw {
+    min-height: 160px;
+    border-radius: 16px;
+}
+
+.bills_replenishment,
+.bills_withdraw {
+    min-height: 160px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.bills_replenishment i,
+.bills_withdraw i {
+    font-size: 40px;
+    margin-bottom: 8px;
 }
 
 /* ================= media ================*/
@@ -562,5 +617,15 @@ tbody tr td {
     .copy {
         font-size: 20px;
         margin-inline-start: 12px;
+    }
+
+    .bills_replenishment,
+    .bills_withdraw {
+        min-height: 96px;
+    }
+
+    .bills_replenishment i,
+    .bills_withdraw i {
+        font-size: 32px;
     }
 }
