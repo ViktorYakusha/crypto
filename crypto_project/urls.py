@@ -3,7 +3,6 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import path, re_path
 from django.conf.urls.static import static
-from debug_toolbar.toolbar import debug_toolbar_urls
 
 from crypto_project.main import views as main_views
 from crypto_project.customer import views as customer_views, consumers
@@ -23,7 +22,11 @@ urlpatterns = [
 
     path('', main_views.homepage, name='homepage'),
     path(os.getenv('ADMIN_URL'), admin.site.urls),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + debug_toolbar_urls()
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+if settings.DEBUG:
+    from debug_toolbar.toolbar import debug_toolbar_urls
+    urlpatterns += debug_toolbar_urls()
 
 websocket_urlpatterns = [
     re_path(r"^customer/$", consumers.PersonalConsumer.as_asgi()),

@@ -79,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'crypto_project.wsgi.application'
+# WSGI_APPLICATION = 'crypto_project.wsgi.application'
 ASGI_APPLICATION = 'crypto_project.asgi.application'
 
 CHANNEL_LAYERS = {

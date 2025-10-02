@@ -7,6 +7,7 @@ from django.core.asgi import get_asgi_application
 from .urls import websocket_urlpatterns
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'crypto_project.settings')
+
 django_asgi_app = get_asgi_application()
 
 application = ProtocolTypeRouter({
