@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import PasswordChangeForm
 from .models import Customer, Bet
 
 class CustomerRegistrationForm(forms.ModelForm):
@@ -6,24 +7,23 @@ class CustomerRegistrationForm(forms.ModelForm):
         model = Customer
         fields = ('user',)
 
-    # def clean_password2(self):
-    #     cd = self.cleaned_data
-    #     if cd['password'] != cd['password2']:
-    #         raise forms.ValidationError('Passwords don\'t match.')
-    #     return cd['password2']
-    # #
-    # # def save(self, commit=True):
-    # #     user = super().save(commit=False)
-    # #     # Save custom fields to the Profile model
-    # #     if commit:
-    # #         user.save()
-    # #         profile = Profile.objects.create(user=user,
-    # #                                          phone_number=self.cleaned_data['phone_number'],
-    # #                                          address=self.cleaned_data['address'])
-    # #     return user
-
 
 class BetForm(forms.ModelForm):
     class Meta:
         model = Bet
         fields = ('quotation', 'type', 'summa')
+
+
+# forms.py
+from django.contrib.auth.forms import PasswordChangeForm
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
+        self.fields['old_password'].widget.attrs.update(
+            {'class': 'form-control', 'placeholder': 'Введите старый пароль'})
+        self.fields['new_password1'].widget.attrs.update(
+            {'class': 'form-control', 'placeholder': 'Введите новый пароль'})
+        self.fields['new_password2'].widget.attrs.update(
+            {'class': 'form-control', 'placeholder': 'Введите подтверждение пароля'})

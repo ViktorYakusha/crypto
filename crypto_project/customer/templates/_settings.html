@@ -6,20 +6,41 @@
     </div>
     <div class="row">
         <div class="col-12 col-xl-9 col-xxl-6">
-            <form id="passwordForm" method="post">
+            {{ form.non_field_errors }}
+            <form id="passwordForm" method="post" autocomplete="off">
+                {% csrf_token %}
+
                 <div class="mb-3">
-                    <label for="loginFormPassword1" class="form-label">Старый пароль</label>
-                    <input type="password" name="password1" id="loginFormPassword1" class="form-control" placeholder="Введите старый пароль">
+                    <label for="{{ form.old_password.id_for_label }}" class="form-label">Старый пароль</label>
+                    <div class="password-wrapp">
+                        <input type="password" name="old_password" autocomplete="current-password" autofocus="" class="form-control {% if form.old_password.errors %} is-invalid{% endif %}" placeholder="Введите старый пароль" required="" aria-invalid="true" id="id_old_password">
+                        <i class="icon icon-eye-slash passwordToggle"></i>
+                    </div>
+                    {% for error in form.old_password.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
                 </div>
                 <div class="mb-3">
-                    <label for="loginFormPassword2" class="form-label">Новый пароль</label>
-                    <input type="password" name="password2" id="loginFormPassword2" class="form-control" placeholder="Введите новый пароль">
+                    <label for="{{ form.new_password1.id_for_label }}" class="form-label">Новый пароль</label>
+                    <div class="password-wrapp">
+                        <input type="password" name="new_password1" autocomplete="new-password" class="form-control {% if form.new_password1.errors %} is-invalid{% endif %}" placeholder="Введите новый пароль" required="" id="id_new_password1">
+                        <i class="icon icon-eye-slash passwordToggle"></i>
+                    </div>
+                    {% for error in form.new_password1.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
                 </div>
                 <div class="mb-3">
-                    <label for="loginFormPassword3" class="form-label">Подтвердите пароль</label>
-                    <input type="password" name="password3" id="loginFormPassword3" class="form-control" placeholder="Введите подтверждение пароля">
+                    <label for="{{ form.new_password2.id_for_label }}" class="form-label">Подтвердите пароль</label>
+                    <div class="password-wrapp">
+                        <input type="password" name="new_password2" autocomplete="new-password" class="form-control {% if form.new_password2.errors %} is-invalid{% endif %}" placeholder="Введите подтверждение пароля" required="" id="id_new_password2">
+                        <i class="icon icon-eye-slash passwordToggle"></i>
+                    </div>
+                    {% for error in form.new_password2.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
                 </div>
-                <div class="d-flex">
+                <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-success" id="passwordSend">Подтвердить</button>
                 </div>
             </form>

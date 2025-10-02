@@ -146,5 +146,20 @@ $(document).ready(function () {
         $('#loginForm').css('display', 'none');
         $('#forgotPasswordForm').css('display', 'block');
         return false;
-      });
+    });
+
+    $(".passwordToggle").click(function(event) {
+        const passwordToggle = event.target;
+        const passwordInput = event.target.offsetParent.children[0];
+
+
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          passwordToggle.classList.replace('icon-eye-slash', 'icon-eye');
+        } else {
+          passwordInput.type = 'password';
+          passwordToggle.classList.replace('icon-eye', 'icon-eye-slash');
+        }
+        return false;
+    });
 });

@@ -11,8 +11,10 @@ from django.utils import timezone
 from datetime import timedelta
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
+from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
 
-from .forms import CustomerRegistrationForm, BetForm
+from .forms import CustomerRegistrationForm, BetForm, CustomPasswordChangeForm
 from .models import Bet
 
 
@@ -127,7 +129,19 @@ def customer_profile_bills(request):
 
 @login_required
 def customer_profile_settings(request):
-    return render(request, 'settings.html')
+    if request.method == 'POST':
+        form = CustomPasswordChangeForm(request.user, request.POST)
+
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important! Keeps the user logged in
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('password_change_done')  # Redirect to a success page
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = CustomPasswordChangeForm(request.user)
+    return render(request, 'settings.html', {'form': form})
 
 @login_required
 @csrf_protect

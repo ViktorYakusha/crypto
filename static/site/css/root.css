@@ -137,10 +137,52 @@ textarea.form-control {
 }
 
 .form-select:focus,
+.form-control:focus,
+.form-control.is-invalid:focus,
+.was-validated .form-control:invalid:focus {
+    box-shadow: none;
+}
+
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+    background-image: none;
+}
+
+.form-select:focus,
 .form-control:focus {
     border: 1px solid var(--color-3);
     color: var(--main-color);
-    box-shadow: none;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    color: var(--color-7);
+    padding-right: 0;
+}
+
+.invalid-feedback {
+    margin-inline-start: 16px;
+    display: none;
+    width: 100%;
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--color-7);
+}
+
+.password-wrapp {
+    position: relative;
+}
+
+.password-wrapp input {
+    padding-right: 48px;
+}
+
+.password-wrapp i {
+    position: absolute;
+    cursor: pointer;
+    font-size: 24px;
+    right: 12px;
+    top: 12px;
 }
 
 .form-check-input {

@@ -105,6 +105,21 @@ $(document).ready(function () {
         copyToClipboard(text);
         alert("Номер кошелька скопирован");
     });
+
+    $(".passwordToggle").click(function(event) {
+        const passwordToggle = event.target;
+        const passwordInput = event.target.offsetParent.children[0];
+
+
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          passwordToggle.classList.replace('icon-eye-slash', 'icon-eye');
+        } else {
+          passwordInput.type = 'password';
+          passwordToggle.classList.replace('icon-eye', 'icon-eye-slash');
+        }
+        return false;
+    });
 });
 
 function replenishmentModalClose() {
