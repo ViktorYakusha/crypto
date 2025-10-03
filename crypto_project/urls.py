@@ -27,7 +27,3 @@ urlpatterns = [
 if settings.DEBUG:
     from debug_toolbar.toolbar import debug_toolbar_urls
     urlpatterns += debug_toolbar_urls()
-
-websocket_urlpatterns = [
-    re_path(r"^customer/$", consumers.PersonalConsumer.as_asgi()),
-]
