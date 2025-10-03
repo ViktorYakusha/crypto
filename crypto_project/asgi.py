@@ -1,13 +1,12 @@
 import os
-import django # Import django
-from channels.routing import ProtocolTypeRouter, URLRouter
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'crypto_project.settings')
+
 from channels.auth import AuthMiddlewareStack
+from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.security.websocket import AllowedHostsOriginValidator
 from django.core.asgi import get_asgi_application
 from .urls import websocket_urlpatterns
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
-django.setup()
 django_asgi_app = get_asgi_application()
 
 application = ProtocolTypeRouter({

@@ -27,6 +27,7 @@ SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
 
 INSTALLED_APPS = [
     'daphne',
+    'channels',
     'django.contrib.admin',
     'django.contrib.staticfiles',
     'django.contrib.auth',
