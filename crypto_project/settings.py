@@ -26,7 +26,7 @@ if DEBUG:
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
 
 INSTALLED_APPS = [
-    'daphne',
+    #'daphne',
     'channels',
     'django.contrib.admin',
     'django.contrib.staticfiles',
