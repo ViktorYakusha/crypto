@@ -26,7 +26,7 @@ if DEBUG:
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
 
 INSTALLED_APPS = [
-    #'daphne',
+    'daphne',
     'channels',
     'django.contrib.admin',
     'django.contrib.staticfiles',
@@ -85,7 +85,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'crypto_project.wsgi.application'
-#ASGI_APPLICATION = 'crypto_project.asgi.application'
+ASGI_APPLICATION = 'crypto_project.asgi.application'
 
 CHANNEL_LAYERS = {
         'default': {
