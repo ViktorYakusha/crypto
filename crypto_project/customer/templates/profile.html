@@ -53,17 +53,17 @@
                 }
             }
 
-            summaInput.addEventListener("keyup", () => {
+            summaInput?.addEventListener("keyup", () => {
                 clearTimeout(timeoutID);
                 timeoutID = setTimeout(validate, 100);
             });
 
 
-            billForm.addEventListener('change', function() {
+            billForm?.addEventListener('change', function() {
               validate()
             });
 
-            billForm.addEventListener('submit', function(event) {
+            billForm?.addEventListener('submit', function(event) {
                 event.preventDefault();
 
                 $.ajax({
