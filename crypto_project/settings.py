@@ -20,6 +20,9 @@ DEBUG = (os.getenv('DEBUG', 'False') == 'True')
 
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
 
+if not DEBUG:
+    CSRF_TRUSTED_ORIGINS = os.getenv('DJANGO_CSRF_TRUSTED_ORIGINS', '').split(',')
+
 if DEBUG:
     INTERNAL_IPS = os.getenv('DJANGO_INTERNAL_IPS', '').split(',')
 
