@@ -424,7 +424,7 @@ var wsStart = 'ws://';
 if (loc.protocol === 'https:') {
     wsStart = 'wss://';
 }
-const socket = new WebSocket(wsStart + loc.host + '/customer/');
+const socket = new WebSocket(wsStart + loc.host + '/ws/customer/');
 
 // Connection opened
 socket.addEventListener("open", (event) => {
