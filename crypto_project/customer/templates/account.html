@@ -1,18 +1,22 @@
 {% extends 'base_profile.html' %}
 
-{% load static %}
+{% block local_css %}{% endblock %}
 
 {% block profile_content %}
-    <div class="container">
+    <div class="container container-full-h">
       <div class="row">
-        <div class="col-3">
+        <div class="col-12 col-xl-3 d-none d-xl-block">
             {% include "_profile.html" %}
         </div>
-        <div class="col-6">
-            <div class="card">account</div>
+        <div class="col-12 col-xl-6 container-full-h">
+            {% include "_account.html" %}
         </div>
-        <div class="col-3">
-          {% include "_contacts.html" %}
+        <div class="col-12 col-xl-3">
+            <div class="row">
+                <div class="col-12 col-md-6 col-xl-12 d-none d-xl-block my-4 mt-xl-0">
+                  {% include "_contacts.html" %}
+                </div>
+            </div>
         </div>
       </div>
     </div>
