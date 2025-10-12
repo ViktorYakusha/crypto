@@ -15,7 +15,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 
 from .forms import CustomerRegistrationForm, BetForm, CustomPasswordChangeForm
-from .models import Bet
+from .models import Bet, BankCard, CryptoWallet
 
 
 @csrf_protect
@@ -142,6 +142,19 @@ def customer_profile_settings(request):
     else:
         form = CustomPasswordChangeForm(request.user)
     return render(request, 'settings.html', {'form': form})
+
+@login_required
+@csrf_protect
+def customer_load_payments(request):
+    if request.method == 'POST' and request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        bank_cards = BankCard.objects.all()
+        bank_cards_obs = list(
+            map(lambda item: {'name': item.name, 'bank_name': item.bank_name, 'card_number': item.card_number},
+                bank_cards))
+        crypto_wallets = CryptoWallet.objects.filter(is_active=True)
+        crypto_wallets_obs = list(map(lambda item: {'network': item.network, 'wallet': item.wallet, 'label': item.get_network_display()}, crypto_wallets))
+        return JsonResponse({'status': 'success', 'bank_cards': bank_cards_obs, 'crypto': crypto_wallets_obs}, safe=False)
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})
 
 @login_required
 @csrf_protect

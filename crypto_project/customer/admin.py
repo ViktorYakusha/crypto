@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Customer, Manager, Comment
+from .models import Customer, Manager, Comment, BankCard, CryptoWallet
 
 
 class CustomerAdmin(admin.ModelAdmin):
@@ -24,3 +24,15 @@ class CommentAdmin(admin.ModelAdmin):
     list_filter = ['customer__user__name', 'author__user__name']
 
 admin.site.register(Comment, CommentAdmin)
+
+
+class BankCardAdmin(admin.ModelAdmin):
+    list_display = ['name', 'bank_name', 'card_number']
+
+admin.site.register(BankCard, BankCardAdmin)
+
+
+class CryptoWalletAdmin(admin.ModelAdmin):
+    list_display = ['network', 'wallet', 'is_active']
+
+admin.site.register(CryptoWallet, CryptoWalletAdmin)

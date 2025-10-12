@@ -3,13 +3,14 @@ $(window).on("load", function () {
     $(".preloader").fadeOut("slow");
 });
 
+let payments = {bank_cards: [], crypto: []}
+
 $(document).ready(function () {
     $(".preloader").fadeOut("slow");
     burgerMenu('.burger-menu');
     loadOpenBets();
     loadCloseBets();
-
-    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    loadPayments();
 
     const replenishmentModal = document.getElementById("replenishmentModal");
     const replenishmentForm = document.getElementById('replenishmentForm');
@@ -17,17 +18,6 @@ $(document).ready(function () {
     const closeReplenishmentModal = document.querySelectorAll(".closeReplenishmentModal");
     const typeSelect = document.getElementById('type');
     const typeSend = document.getElementById('typeSend');
-
-    const _objects = {
-        'bank_cards': [
-            {'name': 'Card name', 'bank_name': 'Bank name', 'card_number': '4444 4444 4444 4444'}
-        ],
-        'crypto': [
-            {'value': 'TRX', 'text': 'Tron (TRC-20)', 'number': 'TFYUouHJBT2iQGZx3cpN2WdLkn8YWg1fut'},
-            {'value': 'ETH', 'text': 'Ethereum (ERC-20)', 'number': 'TFYUouHJBT2iQGZx3cpN2WdLkn8YWg1fue'},
-            {'value': 'BSC', 'text': 'BNB Smart Chain (BEP20)', 'number': 'TFYUouHJBT2iQGZx3cpN2WdLkn8YWg1fub'}
-        ]
-    }
 
     typeSelect.addEventListener('change', function() {
         if(typeSelect.value !== '') {
@@ -42,9 +32,9 @@ $(document).ready(function () {
 
         if(typeSelect.value === 'bank_cards') {
             $('#selectedBlock').css('display', 'none');
-            $('#bankCardsBlockName').text(_objects[typeSelect.value][0].name);
-            $('#bankCardsBlockBankName').text(_objects[typeSelect.value][0].bank_name);
-            $('#bankCardsBlockCardNumber').html(_objects[typeSelect.value][0].card_number + '<i class="icon icon-copy copy" data-text="' + _objects[typeSelect.value][0].card_number  + '"></i>');
+            $('#bankCardsBlockName').text(payments[typeSelect.value][0].name);
+            $('#bankCardsBlockBankName').text(payments[typeSelect.value][0].bank_name);
+            $('#bankCardsBlockCardNumber').html(payments[typeSelect.value][0].card_number + '<i class="icon icon-copy copy" data-text="' + payments[typeSelect.value][0].card_number  + '"></i>');
             $('#bankCardsBlock').css('display', 'block');
         }
 
@@ -53,19 +43,19 @@ $(document).ready(function () {
             const cryptoSelect = document.getElementById('cryptoBlockName');
             cryptoSelect.innerHTML = '<option value="" selected disabled>Выберите сеть</option>';
 
-            _objects[typeSelect.value].forEach(crypto_item => {
+            payments[typeSelect.value].forEach(crypto_item => {
               const option = document.createElement('option');
-              option.value = crypto_item.value;
-              option.text = crypto_item.text;
+              option.value = crypto_item.network;
+              option.text = crypto_item.label;
               cryptoSelect.appendChild(option);
             });
             $('#cryptoBlock').css('display', 'block');
 
             cryptoSelect.addEventListener('change', function(event) {
                 const key = event.target.value;
-                const foundElement = _objects[typeSelect.value].find(element => element.value === key);
-                $('#cryptoBlockNumber').text(foundElement.number);
-                $('#cryptoCopy').attr("data-text", foundElement.number);
+                const foundElement = payments[typeSelect.value].find(element => element.network === key);
+                $('#cryptoBlockNumber').text(foundElement.wallet);
+                $('#cryptoCopy').attr("data-text", foundElement.wallet);
                 $('#cryptoCopy').css('display', 'block');
             });
         }
@@ -413,6 +403,24 @@ function loadCloseBets() {
         error: function(xhr, status, error) {
             console.error("AJAX Error:", error);
             $('.open_preloader').css("display", "flex");
+        }
+    });
+}
+
+function loadPayments() {
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    $.ajax({
+        url: 'load-payments',
+        type: 'POST',
+        data: {},
+        headers: {
+            'X-CSRFToken': csrftoken
+        },
+        success: function(response) {
+            payments = {bank_cards: response.bank_cards, crypto: response.crypto};
+        },
+        error: function(xhr, status, error) {
+            console.error("AJAX Error:", error);
         }
     });
 }

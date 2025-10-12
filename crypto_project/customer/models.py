@@ -1,5 +1,6 @@
 import uuid
 from phonenumber_field.modelfields import PhoneNumberField
+from singleton_model import SingletonModel
 from authtools.models import User
 from django.db import models
 from django.core.validators import RegexValidator
@@ -106,6 +107,30 @@ class Bet(models.Model):
     close_date = models.DateTimeField(null=True, blank=True)
     entry = models.FloatField(default=0)
     profit = models.FloatField(default=0)
+
+    class Meta:
+        app_label = 'customer'
+
+
+class BankCard(SingletonModel):
+    name = models.CharField(max_length=50)
+    bank_name = models.CharField(max_length=50)
+    card_number = models.CharField(max_length=16)
+
+    class Meta:
+        app_label = 'customer'
+
+
+class CryptoWalletType(models.TextChoices):
+    TRX = 'TRX', 'Tron (TRC-20)'
+    ETH = 'ETH', 'Ethereum (ERC-20)'
+    BSC = 'BSC', 'BNB Smart Chain (BEP20)'
+
+
+class CryptoWallet(models.Model):
+    network = models.CharField(max_length=3, choices=CryptoWalletType.choices)
+    wallet = models.CharField(max_length=50)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         app_label = 'customer'
