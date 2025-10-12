@@ -128,7 +128,7 @@ class CryptoWalletType(models.TextChoices):
 
 
 class CryptoWallet(models.Model):
-    network = models.CharField(max_length=3, choices=CryptoWalletType.choices)
+    network = models.CharField(max_length=3, choices=CryptoWalletType.choices, unique=True)
     wallet = models.CharField(max_length=50)
     is_active = models.BooleanField(default=True)
 
