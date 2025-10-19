@@ -132,7 +132,7 @@ def customer_profile_account(request):
         if user_form.is_valid() and customer_form.is_valid():
             user_form.save()
             customer_form.save()
-            return redirect('customer_profile')
+            return redirect('customer_profile_account')
         else:
             return render(request, 'account.html', {'user_form': user_form, 'customer_form': customer_form, 'was_validated': True})
     else:
