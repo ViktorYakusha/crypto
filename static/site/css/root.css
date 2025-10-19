@@ -102,7 +102,6 @@ h2 {
     font-size: 20px;
     line-height: 24px;
     font-weight: 600;
-    margin-bottom: 24px;
 }
 
 label {
@@ -154,6 +153,15 @@ textarea.form-control {
     color: var(--main-color);
 }
 
+input.form-control:disabled, input.form-control:read-only {
+    background-color: var(--color-border);
+    opacity: 1;
+}
+
+input.form-control:focus:disabled, input.form-control:focus:read-only {
+        border: 1px solid var(--color-border);
+}
+
 .form-control.is-invalid, .was-validated .form-control:invalid {
     color: var(--color-7);
     padding-right: 0;
@@ -161,7 +169,7 @@ textarea.form-control {
 
 .invalid-feedback {
     margin-inline-start: 16px;
-    display: none;
+    display: block;
     width: 100%;
     margin-top: 4px;
     font-size: 12px;

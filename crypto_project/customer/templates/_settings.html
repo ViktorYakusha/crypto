@@ -13,7 +13,7 @@
                 <div class="mb-3">
                     <label for="{{ form.old_password.id_for_label }}" class="form-label">Старый пароль</label>
                     <div class="password-wrapp">
-                        <input type="password" name="old_password" autocomplete="current-password" autofocus="" class="form-control {% if form.old_password.errors %} is-invalid{% endif %}" placeholder="Введите старый пароль" required="" aria-invalid="true" id="id_old_password">
+                        <input type="password" name="old_password" autocomplete="current-password" class="form-control {% if form.old_password.errors %} is-invalid{% endif %}" placeholder="Введите старый пароль" required="" aria-invalid="true" id="id_old_password">
                         <i class="icon icon-eye-slash passwordToggle"></i>
                     </div>
                     {% for error in form.old_password.errors %}

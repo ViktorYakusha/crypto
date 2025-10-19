@@ -14,7 +14,7 @@ from asgiref.sync import async_to_sync
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 
-from .forms import CustomerRegistrationForm, BetForm, CustomPasswordChangeForm
+from .forms import CustomerRegistrationForm, BetForm, CustomPasswordChangeForm, CustomerUpdateForm, UpdateUserForm
 from .models import Bet, BankCard, CryptoWallet
 
 
@@ -36,6 +36,7 @@ def customer_registration(request):
             return JsonResponse({'status': 'error', 'user_form': user_form.errors, 'customer_form': customer_form.errors}, status=400)
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})
+
 
 @csrf_protect
 def customer_create_bet(request):
@@ -82,6 +83,7 @@ def customer_create_bet(request):
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'}, status=400)
 
+
 @csrf_protect
 def customer_login(request):
     if request.method == 'POST':
@@ -107,10 +109,12 @@ def customer_login(request):
     response_data = {'status': 'error', 'error': 'Invalid request method.'}
     return JsonResponse(response_data, status=400)
 
+
 @login_required
 def customer_logout(request):
     logout(request)
     return redirect('/')
+
 
 @login_required
 def customer_profile(request):
@@ -119,13 +123,28 @@ def customer_profile(request):
     opened_bets = Bet.objects.filter(customer=customer, entry=0).order_by('-open_date')
     return render(request, 'profile.html', {'closed_bets': closed_bets, 'opened_bets': opened_bets})
 
+
 @login_required
 def customer_profile_account(request):
-    return render(request, 'account.html')
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        customer_form = CustomerUpdateForm(request.POST, instance=request.user.customer)
+        if user_form.is_valid() and customer_form.is_valid():
+            user_form.save()
+            customer_form.save()
+            return redirect('customer_profile')
+        else:
+            return render(request, 'account.html', {'user_form': user_form, 'customer_form': customer_form, 'was_validated': True})
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+        customer_form = CustomerUpdateForm(instance=request.user.customer)
+    return render(request, 'account.html', {'user_form': user_form, 'customer_form': customer_form, 'was_validated': True})
+
 
 @login_required
 def customer_profile_bills(request):
     return render(request, 'bills.html')
+
 
 @login_required
 def customer_profile_settings(request):
@@ -143,6 +162,7 @@ def customer_profile_settings(request):
         form = CustomPasswordChangeForm(request.user)
     return render(request, 'settings.html', {'form': form})
 
+
 @login_required
 @csrf_protect
 def customer_load_payments(request):
@@ -156,6 +176,7 @@ def customer_load_payments(request):
         return JsonResponse({'status': 'success', 'bank_cards': bank_cards_obs, 'crypto': crypto_wallets_obs}, safe=False)
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})
 
+
 @login_required
 @csrf_protect
 def customer_load_open_bets(request):
@@ -167,6 +188,7 @@ def customer_load_open_bets(request):
         return JsonResponse({'status': 'success', 'bets': json_opened_bets, 'balance': balance}, safe=False)
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})
 
+
 @login_required
 @csrf_protect
 def customer_load_close_bets(request):
@@ -176,6 +198,7 @@ def customer_load_close_bets(request):
         json_closed_bets = serializers.serialize("json", closed_bets, fields=['quotation', 'summa', 'open_date', 'close_date', 'entry', 'profit'])
         return JsonResponse({'status': 'success', 'bets': json_closed_bets}, safe=False)
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})
+
 
 @shared_task
 def close_bet(bet_id):

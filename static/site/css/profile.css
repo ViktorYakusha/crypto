@@ -537,6 +537,30 @@ tbody tr td {
     margin-bottom: 8px;
 }
 
+#account .type-title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--color-1);
+}
+#account .line {
+    width: 100%;
+    height: 1px;
+    display: block;
+    background-color: var(--color-border);
+}
+
+.country_wrap {
+    position: relative;
+}
+
+.country-select-flag {
+    position: absolute;
+    right: 20px;
+    top: 42px;
+}
+
+
 /* ================= media ================*/
 @media (min-width: 1920px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl {

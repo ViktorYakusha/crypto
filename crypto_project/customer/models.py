@@ -1,6 +1,7 @@
 import uuid
 from phonenumber_field.modelfields import PhoneNumberField
 from singleton_model import SingletonModel
+from django_countries.fields import CountryField
 from authtools.models import User
 from django.db import models
 from django.core.validators import RegexValidator
@@ -34,17 +35,9 @@ class Customer(models.Model):
     manager = models.ForeignKey(Manager, on_delete=models.CASCADE, null=True, blank=True)
     date_modified = models.DateTimeField(auto_now=True)
     phone_number = PhoneNumberField(blank=True, null=True)
-    country = models.CharField(max_length=200, null=True, blank=True)
+    country = CountryField(blank=True, null=True)
     city = models.CharField(max_length=200, null=True, blank=True)
-    zip_code = models.CharField(
-        max_length=10,
-        validators=[
-            RegexValidator(
-                regex=r"^\d{5}(-\d{4})?$",
-                message="Enter a valid US zip code."
-            )
-        ], null=True, blank=True
-    )
+    zip_code = models.CharField(max_length=10, null=True, blank=True)
     address = models.CharField(max_length=200, null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     job_address = models.CharField(max_length=200, null=True, blank=True)

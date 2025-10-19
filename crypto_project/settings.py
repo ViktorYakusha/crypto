@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'authtools',
+    'django_countries',
     'django_celery_results',
     'django_celery_beat',
     'phonenumber_field',
@@ -143,7 +144,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Europe/Kyiv'
 
@@ -166,11 +166,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 USE_I18N = True
 USE_L10N = True
 
-LANGUAGE_CODE = 'ru-ru'
-
 LANGUAGES = [
     ('en', 'English'),
     ('ru', 'Русский'),
+]
+LANGUAGE_CODE = 'ru'
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
 ]
 
 LOGIN_URL = '/'

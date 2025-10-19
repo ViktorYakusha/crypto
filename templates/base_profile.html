@@ -5,6 +5,7 @@
 {% block title %}Профайл{% endblock %}
 
 {% block custom_css %}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
     <!-- link to css file -->
     <link rel="stylesheet" href="{% static 'site/css/style.css' %}?v={{ VERSION }}">
 
@@ -153,5 +154,15 @@
 
 {% block custom_js %}
     <!-- main js file -->
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js" integrity="sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI=" crossorigin="anonymous"></script>
     <script src="{% static 'site/js/profile.js' %}?v={{ VERSION }}"></script>
+        <script>
+        $(document).ready(function () {
+            $( "#id_birth_date" ).datepicker({
+                dateFormat: 'yy-mm-dd',
+                monthNames : ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+	            dayNamesMin : ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+            });
+        });
+    </script>
 {% endblock %}
