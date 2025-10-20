@@ -4,8 +4,7 @@ from singleton_model import SingletonModel
 from django_countries.fields import CountryField
 from authtools.models import User
 from django.db import models
-from django.core.validators import RegexValidator
-from django.utils import timezone
+import datetime
 
 class Manager(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -96,7 +95,7 @@ class Bet(models.Model):
     quotation = models.CharField(max_length=6, choices=QUOTES_CHOICES, null=True, blank=True)
     type = models.CharField(max_length=4, choices=TYPE_CHOICES, null=True, blank=True)
     summa = models.FloatField(default=0)
-    open_date = models.DateTimeField(default=timezone.now)
+    open_date = models.DateTimeField(default=datetime.datetime.now)
     close_date = models.DateTimeField(null=True, blank=True)
     entry = models.FloatField(default=0)
     profit = models.FloatField(default=0)
