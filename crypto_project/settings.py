@@ -144,7 +144,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-
+USE_TZ = True
 TIME_ZONE = 'Europe/Kyiv'
 
 # Static files (CSS, JavaScript, Images)
